@@ -18,6 +18,12 @@
 		1DF99F8F1B0D2AC2002C8BF8 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 1DF99F8E1B0D2AC2002C8BF8 /* .gitignore */; };
 		1DF99F951B0D2B33002C8BF8 /* ApiKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF99F941B0D2B33002C8BF8 /* ApiKeys.m */; };
 		1DF99F971B0D2C34002C8BF8 /* ApiKeysTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF99F961B0D2C34002C8BF8 /* ApiKeysTest.m */; };
+		1DF99F9A1B0D2F33002C8BF8 /* NetworkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF99F991B0D2F33002C8BF8 /* NetworkController.m */; };
+		1DF99F9C1B0D3AFB002C8BF8 /* NetworkControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF99F9B1B0D3AFB002C8BF8 /* NetworkControllerTest.m */; };
+		1DF99F9F1B0D3DEF002C8BF8 /* Food.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF99F9E1B0D3DEF002C8BF8 /* Food.m */; };
+		1DF99FA21B0D3EA2002C8BF8 /* Nutrient.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF99FA11B0D3EA2002C8BF8 /* Nutrient.m */; };
+		1DF99FA51B0D48CF002C8BF8 /* UsdaClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF99FA41B0D48CF002C8BF8 /* UsdaClient.m */; };
+		1DF99FA71B0E79D0002C8BF8 /* UsdaClientTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF99FA61B0E79D0002C8BF8 /* UsdaClientTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +55,16 @@
 		1DF99F931B0D2B33002C8BF8 /* ApiKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiKeys.h; sourceTree = "<group>"; };
 		1DF99F941B0D2B33002C8BF8 /* ApiKeys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiKeys.m; sourceTree = "<group>"; };
 		1DF99F961B0D2C34002C8BF8 /* ApiKeysTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiKeysTest.m; sourceTree = "<group>"; };
+		1DF99F981B0D2F33002C8BF8 /* NetworkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkController.h; sourceTree = "<group>"; };
+		1DF99F991B0D2F33002C8BF8 /* NetworkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkController.m; sourceTree = "<group>"; };
+		1DF99F9B1B0D3AFB002C8BF8 /* NetworkControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkControllerTest.m; sourceTree = "<group>"; };
+		1DF99F9D1B0D3DEF002C8BF8 /* Food.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Food.h; sourceTree = "<group>"; };
+		1DF99F9E1B0D3DEF002C8BF8 /* Food.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Food.m; sourceTree = "<group>"; };
+		1DF99FA01B0D3EA2002C8BF8 /* Nutrient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Nutrient.h; sourceTree = "<group>"; };
+		1DF99FA11B0D3EA2002C8BF8 /* Nutrient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Nutrient.m; sourceTree = "<group>"; };
+		1DF99FA31B0D48CF002C8BF8 /* UsdaClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UsdaClient.h; sourceTree = "<group>"; };
+		1DF99FA41B0D48CF002C8BF8 /* UsdaClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UsdaClient.m; sourceTree = "<group>"; };
+		1DF99FA61B0E79D0002C8BF8 /* UsdaClientTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UsdaClientTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +133,8 @@
 				1DF99F841B0D2AA9002C8BF8 /* RecipeNutrientsTests.m */,
 				1DF99F821B0D2AA9002C8BF8 /* Supporting Files */,
 				1DF99F961B0D2C34002C8BF8 /* ApiKeysTest.m */,
+				1DF99F9B1B0D3AFB002C8BF8 /* NetworkControllerTest.m */,
+				1DF99FA61B0E79D0002C8BF8 /* UsdaClientTest.m */,
 			);
 			path = RecipeNutrientsTests;
 			sourceTree = "<group>";
@@ -135,6 +153,10 @@
 				1DF99F751B0D2AA9002C8BF8 /* Images.xcassets */,
 				1DF99F931B0D2B33002C8BF8 /* ApiKeys.h */,
 				1DF99F941B0D2B33002C8BF8 /* ApiKeys.m */,
+				1DF99F9D1B0D3DEF002C8BF8 /* Food.h */,
+				1DF99F9E1B0D3DEF002C8BF8 /* Food.m */,
+				1DF99FA01B0D3EA2002C8BF8 /* Nutrient.h */,
+				1DF99FA11B0D3EA2002C8BF8 /* Nutrient.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -153,6 +175,10 @@
 			children = (
 				1DF99F6F1B0D2AA9002C8BF8 /* ViewController.h */,
 				1DF99F701B0D2AA9002C8BF8 /* ViewController.m */,
+				1DF99F981B0D2F33002C8BF8 /* NetworkController.h */,
+				1DF99F991B0D2F33002C8BF8 /* NetworkController.m */,
+				1DF99FA31B0D48CF002C8BF8 /* UsdaClient.h */,
+				1DF99FA41B0D48CF002C8BF8 /* UsdaClient.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -259,9 +285,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DF99F6B1B0D2AA9002C8BF8 /* AppDelegate.m in Sources */,
+				1DF99F9F1B0D3DEF002C8BF8 /* Food.m in Sources */,
 				1DF99F681B0D2AA9002C8BF8 /* main.m in Sources */,
 				1DF99F951B0D2B33002C8BF8 /* ApiKeys.m in Sources */,
+				1DF99FA51B0D48CF002C8BF8 /* UsdaClient.m in Sources */,
 				1DF99F711B0D2AA9002C8BF8 /* ViewController.m in Sources */,
+				1DF99F9A1B0D2F33002C8BF8 /* NetworkController.m in Sources */,
+				1DF99FA21B0D3EA2002C8BF8 /* Nutrient.m in Sources */,
 				1DF99F6E1B0D2AA9002C8BF8 /* RecipeNutrients.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -271,7 +301,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DF99F971B0D2C34002C8BF8 /* ApiKeysTest.m in Sources */,
+				1DF99F9C1B0D3AFB002C8BF8 /* NetworkControllerTest.m in Sources */,
 				1DF99F851B0D2AA9002C8BF8 /* RecipeNutrientsTests.m in Sources */,
+				1DF99FA71B0E79D0002C8BF8 /* UsdaClientTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
