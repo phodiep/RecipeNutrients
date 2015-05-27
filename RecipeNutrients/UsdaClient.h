@@ -8,12 +8,17 @@
 
 #import <Foundation/Foundation.h>
 #import "Food.h"
+#import "FoodListItem.h"
 
 @interface UsdaClient : NSObject
 
 +(id)sharedService;
 
 -(Food*)fetchFoodReport:(NSString*)ndbno;
--(NSArray*)fetchFoodList:(NSString*)listType offsetResults:(NSString*)offset;
+
+-(NSArray*)fetchFoodList:(ListType*)listType maxResults:(NSString*)maxResults offsetResults:(NSString*)offset;
+-(NSArray*)fetchFoodList:(ListType*)listType maxResults:(NSString*)maxResults;
+-(NSArray*)fetchFoodList:(ListType*)listType offsetResults:(NSString*)offset;
+-(NSArray*)fetchFoodList:(ListType*)listType;
 
 @end

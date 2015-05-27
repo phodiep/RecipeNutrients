@@ -28,4 +28,6 @@ typedef enum {
 -(instancetype)initWithJson:(NSDictionary*)json;
 -(NSArray*)parseMultipleWithJson:(NSArray*)json;
 
++(NSString*)listTypeToString:(ListType)listType;
+
 @end

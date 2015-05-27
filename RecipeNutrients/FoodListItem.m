@@ -13,7 +13,10 @@
 -(instancetype)initWithJson:(NSDictionary*)json {
     self = [super init];
     if (self) {
+        
+//        can't use because api uses 'id' as key'
 //        [self setValuesForKeysWithDictionary:json];
+
         self.idno = json[@"id"];
         self.name = json[@"name"];
     }
@@ -33,8 +36,30 @@
         [parsedItems addObject:item];
     }
     
-    
     return parsedItems;
+}
+
++(NSString*)listTypeToString:(ListType)listType {
+    switch (listType) {
+        case f:
+            return @"f";
+            break;
+        case n:
+            return @"n";
+            break;
+        case ns:
+            return @"ns";
+            break;
+        case nr:
+            return @"nr";
+            break;
+        case g:
+            return @"g";
+            break;
+        default:
+            break;
+    }
+    return nil;
 }
 
 @end

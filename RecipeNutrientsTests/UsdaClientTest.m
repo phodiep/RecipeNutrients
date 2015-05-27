@@ -31,15 +31,14 @@
     [super tearDown];
 }
 
+#pragma mark - testFetchFoodReport
 - (void)testFetchFoodReport {
     NSString *ndbno = @"01009";
-    
     Food *food = [self.instance fetchFoodReport:ndbno];
     
     XCTAssert([food.name isEqualToString:@"Cheese, cheddar"],@"Food name doesn't match");
     XCTAssert([food.ndbno isEqualToString:@"01009"], @"Food ndbno doesn't match");
 }
-
 
 - (void)testFetchFoodReport_nilParam {
     Food *food = [self.instance fetchFoodReport:nil];
@@ -52,26 +51,67 @@
     XCTAssert(food == nil);
 }
 
+
+#pragma mark - testFetchFoodList
 - (void)testFetchFoodList_food {
-    NSString *foodType = @"f";
+    ListType foodType = f;
     NSString *offset = @"0";
+    NSString *maxResults = @"50";
     
-    NSArray *foodList = [self.instance fetchFoodList:foodType offsetResults:offset];
-    
+    NSArray *foodList = [self.instance fetchFoodList:&foodType maxResults:maxResults offsetResults:offset];
     FoodListItem *firstItem = (FoodListItem*)foodList[0];
     
+    XCTAssert([foodList count] == maxResults.intValue);
+    XCTAssert([firstItem.name isEqualToString:@"Abiyuch, raw"]);
+}
+
+- (void)testFetchFoodList_food_noMaxNoOffset {
+    ListType foodType = f;
+    
+    NSArray *foodList = [self.instance fetchFoodList:&foodType];
+    FoodListItem *firstItem = (FoodListItem*)foodList[0];
+
+    XCTAssert([foodList count] == 100);
+    XCTAssert([firstItem.name isEqualToString:@"Abiyuch, raw"]);
+}
+
+- (void)testFetchFoodList_food_offset {
+    ListType foodType = f;
+    NSString *offset = @"2";
+    
+    NSArray *foodList = [self.instance fetchFoodList:&foodType offsetResults:offset];
+    FoodListItem *firstItem = (FoodListItem*)foodList[0];
+    
+    XCTAssert([foodList count] == 100);
+    XCTAssert([firstItem.name isEqualToString:@"Acerola, (west indian cherry), raw"]);
+}
+
+
+- (void)testFetchFoodList_food_max {
+    ListType foodType = f;
+    NSString *maxResults = @"25";
+    
+    NSArray *foodList = [self.instance fetchFoodList:&foodType maxResults:maxResults];
+    FoodListItem *firstItem = (FoodListItem*)foodList[0];
+    
+    XCTAssert([foodList count] == maxResults.intValue);
     XCTAssert([firstItem.name isEqualToString:@"Abiyuch, raw"]);
 }
 
 - (void)testFetchFoodList_nutrient {
-    NSString *foodType = @"n";
+    ListType foodType = n;
     NSString *offset = @"0";
     
-    NSArray *foodList = [self.instance fetchFoodList:foodType offsetResults:offset];
-    
+    NSArray *foodList = [self.instance fetchFoodList:&foodType offsetResults:offset];
     FoodListItem *firstItem = (FoodListItem*)foodList[0];
     
     XCTAssert([firstItem.name isEqualToString:@"(+)-Catechin"]);
+}
+
+- (void)testFetchFoodList_nil {
+    NSString *offset = @"0";
+    NSArray *foodList = [self.instance fetchFoodList:nil offsetResults:offset];
+    XCTAssert(foodList == nil);
 }
 
 

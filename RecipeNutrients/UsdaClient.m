@@ -8,7 +8,6 @@
 
 #import "UsdaClient.h"
 #import "NetworkController.h"
-#import "FoodListItem.h"
 
 @interface UsdaClient ()
 
@@ -86,16 +85,15 @@
 }
 
 #pragma mark - Fetch Food Lists
--(NSArray*)fetchFoodList:(NSString*)listType offsetResults:(NSString*)offset {
-    
+-(NSArray*)fetchFoodList:(ListType*)listType maxResults:(NSString*)maxResults offsetResults:(NSString*)offset {
     if (listType == nil) {
         return nil;
     }
-    
+    NSString *type = [FoodListItem listTypeToString:*listType];
     NSString *endpoint = self.httpEndPointLists;
     
-    NSDictionary *param = @{@"lt" : listType,
-                            @"max" : @"100",
+    NSDictionary *param = @{@"lt" : type,
+                            @"max" : maxResults,
                             @"offset" : offset,
                             @"sort" : @"n",
                             @"format" : @"JSON"
@@ -115,6 +113,18 @@
                                         }
                                     }];
     return foodList;
+}
+
+-(NSArray*)fetchFoodList:(ListType*)listType offsetResults:(NSString*)offset {
+    return [self fetchFoodList:listType maxResults:@"100" offsetResults:offset];
+}
+
+-(NSArray*)fetchFoodList:(ListType*)listType maxResults:(NSString*)maxResults {
+    return [self fetchFoodList:listType maxResults:maxResults offsetResults:@"0"];
+}
+
+-(NSArray*)fetchFoodList:(ListType*)listType {
+    return [self fetchFoodList:listType maxResults:@"100" offsetResults:@"0"];
 }
 
 @end
