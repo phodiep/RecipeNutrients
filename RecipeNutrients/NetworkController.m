@@ -66,16 +66,6 @@
         NSLog(@"\n\nRequest Error: %@", error);
         return nil;
     }
-    
-//    if ([NetworkController goodResponseCode:response] == false) {
-//        //deal w/ bad response
-//        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
-//        NSLog(@"Bad Response: %ld", (long)httpResponse.statusCode);
-//        return nil;
-//    }
-    
-//    Response* finalResponse = [[Response alloc] init:[NSJSONSerialization JSONObjectWithData:result options:0 error:nil]];
-//    return [finalResponse getResults];
 
     return [NSJSONSerialization JSONObjectWithData:result options:0 error:nil];
     

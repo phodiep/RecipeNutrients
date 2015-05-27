@@ -14,5 +14,6 @@
 +(id)sharedService;
 
 -(Food*)fetchFoodReport:(NSString*)ndbno;
+-(NSArray*)fetchFoodList:(NSString*)listType offsetResults:(NSString*)offset;
 
 @end

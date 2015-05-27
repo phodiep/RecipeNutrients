@@ -9,27 +9,34 @@
 #import "Food.h"
 #import "Nutrient.h"
 
+@interface Food ()
+
+@property (strong, nonatomic) NSString *nutrients;
+
+@end
+
 @implementation Food
 
 -(instancetype)initWithJson:(NSDictionary*)json {
     self = [super init];
     
     if (self) {
+        [self setValuesForKeysWithDictionary:json];
+
+        [self parseNutrients];
+    }
+    return self;
+}
+
+-(void)parseNutrients {
+    NSArray *rawNutrients = (NSArray*) self.nutrients;
     
-        self.name = json[@"name"];
-        self.ndbNo = json[@"ndbno"];
-
-        NSArray *rawNutrients = (NSArray*)json[@"nutrients"];
-
-        NSMutableArray *parsedNutrients = [[NSMutableArray alloc] init];
-        for (id item in rawNutrients) {
-            [parsedNutrients addObject:[[Nutrient alloc]initWithJson:(NSDictionary*)item]];
-        }
-
-        self.nutrients = [[NSArray alloc] initWithArray:parsedNutrients];
+    NSMutableArray *parsedNutrients = [[NSMutableArray alloc] init];
+    for (id item in rawNutrients) {
+        [parsedNutrients addObject:[[Nutrient alloc]initWithJson:(NSDictionary*)item]];
     }
     
-    return self;
+    self.nutrientsArray = [[NSArray alloc] initWithArray:parsedNutrients];
 }
 
 @end

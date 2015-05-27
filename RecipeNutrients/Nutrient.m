@@ -7,47 +7,40 @@
 //
 
 #import "Nutrient.h"
+#import "Measure.h"
+
+@interface Nutrient ()
+
+@property (strong, nonatomic) NSString *measures;
+
+@end
 
 @implementation Nutrient
 
 -(instancetype)initWithJson:(NSDictionary*)json {
     self = [super init];
     if (self) {
-        self.name = json[@"name"];
-        self.nutrientId = json[@"nutrient_id"];
-        self.unit = json[@"unit"];
-        self.value = json[@"value"];
-        self.group = json[@"group"];
+        [self setValuesForKeysWithDictionary:json];
+        
+        [self parseMeasures];
     }
     return self;
 }
 
-/*{
- group = Proximates;
- measures =                     (
- {
- eqv = 148;
- label = large;
- qty = 1;
- value = "131.99";
- },
- {
- eqv = 15;
- label = small;
- qty = 1;
- value = "13.38";
- },
- {
- eqv = 86;
- label = "cup sliced";
- qty = 1;
- value = "76.69";
- }
- );
- name = Water;
- "nutrient_id" = 255;
- unit = g;
- value = "89.18";
- }
- */
+-(void)parseMeasures {
+    NSArray *rawMeasures = (NSArray*) self.measures;
+    NSMutableDictionary *parsedMeasures = [[NSMutableDictionary alloc] init];
+        
+    for (id item in rawMeasures) {
+        Measure *measure = [[Measure alloc] initWithJson:item];
+        [parsedMeasures setObject:measure forKey:measure.label];
+    }
+    
+    self.measurements = parsedMeasures;
+}
+
+-(NSArray*)getMeasurementOptions {
+    return [self.measurements allKeys];
+}
+
 @end

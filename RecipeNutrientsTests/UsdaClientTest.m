@@ -10,6 +10,7 @@
 #import <XCTest/XCTest.h>
 #import "UsdaClient.h"
 #import "Food.h"
+#import "FoodListItem.h"
 
 @interface UsdaClientTest : XCTestCase
 
@@ -31,21 +32,46 @@
 }
 
 - (void)testFetchFoodReport {
-    NSString *ndbNo = @"01009";
+    NSString *ndbno = @"01009";
     
-    Food *food = [self.instance fetchFoodReport:ndbNo];
+    Food *food = [self.instance fetchFoodReport:ndbno];
     
     XCTAssert([food.name isEqualToString:@"Cheese, cheddar"],@"Food name doesn't match");
-    XCTAssert([food.ndbNo isEqualToString:@"01009"], @"Food ndbno doesn't match");
+    XCTAssert([food.ndbno isEqualToString:@"01009"], @"Food ndbno doesn't match");
 }
 
-- (void)testFetchFoodReportNil {
-    NSString *ndbNo = nil;
 
-    //TODO: fix assert after nil in json fixed
-//    Food *food = [self.instance fetchFoodReport:ndbNo];
-//    XCTAssert(food == nil);
-    XCTAssert(true);
+- (void)testFetchFoodReport_nilParam {
+    Food *food = [self.instance fetchFoodReport:nil];
+    XCTAssert(food == nil);
+}
+
+- (void)testFetchFoodReport_badParam {
+    NSString *ndbno = @"some random string";
+    Food *food = [self.instance fetchFoodReport:ndbno];
+    XCTAssert(food == nil);
+}
+
+- (void)testFetchFoodList_food {
+    NSString *foodType = @"f";
+    NSString *offset = @"0";
+    
+    NSArray *foodList = [self.instance fetchFoodList:foodType offsetResults:offset];
+    
+    FoodListItem *firstItem = (FoodListItem*)foodList[0];
+    
+    XCTAssert([firstItem.name isEqualToString:@"Abiyuch, raw"]);
+}
+
+- (void)testFetchFoodList_nutrient {
+    NSString *foodType = @"n";
+    NSString *offset = @"0";
+    
+    NSArray *foodList = [self.instance fetchFoodList:foodType offsetResults:offset];
+    
+    FoodListItem *firstItem = (FoodListItem*)foodList[0];
+    
+    XCTAssert([firstItem.name isEqualToString:@"(+)-Catechin"]);
 }
 
 

@@ -8,6 +8,7 @@
 
 #import "UsdaClient.h"
 #import "NetworkController.h"
+#import "FoodListItem.h"
 
 @interface UsdaClient ()
 
@@ -59,6 +60,10 @@
 
 #pragma mark - Fetch Food Report
 -(Food*)fetchFoodReport:(NSString*)ndbno {
+    if (ndbno == nil) {
+        return nil;
+    }
+    
     NSString *endpoint = self.httpEndPointFoodReports;
     
     NSDictionary *param = @{@"ndbno" : ndbno,
@@ -70,13 +75,46 @@
     [[NetworkController sharedInstance] makeApiGetRequest:endpoint
                                            withParameters:param
                                     withCompletionHandler:^(NSObject *results) {
-                                        NSDictionary *result = (NSDictionary*)results;
-                                        NSDictionary *report = (NSDictionary*)result[@"report"];
+                                        if (results != nil) {
+                                            NSDictionary *result = (NSDictionary*)results;
+                                            NSDictionary *report = (NSDictionary*)result[@"report"];
 
                                             food = [[Food alloc] initWithJson:(NSDictionary*)report[@"food"]];
-                                        
+                                        }
                                     }];
     return food;
+}
+
+#pragma mark - Fetch Food Lists
+-(NSArray*)fetchFoodList:(NSString*)listType offsetResults:(NSString*)offset {
+    
+    if (listType == nil) {
+        return nil;
+    }
+    
+    NSString *endpoint = self.httpEndPointLists;
+    
+    NSDictionary *param = @{@"lt" : listType,
+                            @"max" : @"100",
+                            @"offset" : offset,
+                            @"sort" : @"n",
+                            @"format" : @"JSON"
+                            };
+
+    __block NSArray *foodList = nil;
+    
+    [[NetworkController sharedInstance] makeApiGetRequest:endpoint
+                                           withParameters:param
+                                    withCompletionHandler:^(NSObject *results) {
+                                        if (results != nil) {
+                                            NSDictionary *result = (NSDictionary*)results;
+                                            NSDictionary *listResult = (NSDictionary*)result[@"list"];
+                                            
+                                            foodList = [[FoodListItem alloc] parseMultipleWithJson:listResult[@"item"]];
+                                            
+                                        }
+                                    }];
+    return foodList;
 }
 
 @end
