@@ -11,6 +11,9 @@
 
 @interface Food ()
 
+@property (strong, nonatomic) NSString *name;
+@property (strong, nonatomic) NSString *ndbno;
+@property (strong, nonatomic) NSArray *nutrientsArray;
 @property (strong, nonatomic) NSString *nutrients;
 
 @end
@@ -22,7 +25,6 @@
     
     if (self) {
         [self setValuesForKeysWithDictionary:json];
-
         [self parseNutrients];
     }
     return self;
@@ -38,6 +40,20 @@
     
     self.nutrientsArray = [[NSArray alloc] initWithArray:parsedNutrients];
 }
+
+-(NSString*)getName {
+    return self.name;
+}
+
+-(NSString*)getNdbno {
+    return self.ndbno;
+}
+
+-(NSArray*)getNutrients {
+    return self.nutrientsArray;
+}
+
+
 
 @end
 

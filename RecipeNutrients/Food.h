@@ -10,11 +10,11 @@
 
 @interface Food : NSObject
 
-@property (strong, nonatomic) NSString *name;
-@property (strong, nonatomic) NSString *ndbno;
-@property (strong, nonatomic) NSArray *nutrientsArray;
-
 -(instancetype)initWithJson:(NSDictionary*)json;
+
+-(NSString*)getName;
+-(NSString*)getNdbno;
+-(NSArray*)getNutrients;
 
 @end
 

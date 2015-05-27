@@ -8,13 +8,20 @@
 
 #import "FoodListItem.h"
 
+@interface FoodListItem ()
+
+@property (strong, nonatomic) NSString *idno;
+@property (strong, nonatomic) NSString *name;
+
+@end
+
 @implementation FoodListItem
 
 -(instancetype)initWithJson:(NSDictionary*)json {
     self = [super init];
     if (self) {
         
-//        can't use because api uses 'id' as key'
+//        can't use kvc because api uses 'id' as key'
 //        [self setValuesForKeysWithDictionary:json];
 
         self.idno = json[@"id"];
@@ -60,6 +67,14 @@
             break;
     }
     return nil;
+}
+
+-(NSString*)getId {
+    return self.idno;
+}
+
+-(NSString*)getName {
+    return self.name;
 }
 
 @end

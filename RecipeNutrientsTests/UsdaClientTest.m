@@ -24,7 +24,6 @@
     [super setUp];
 
     self.instance = [UsdaClient sharedService];
-    
 }
 
 - (void)tearDown {
@@ -36,8 +35,8 @@
     NSString *ndbno = @"01009";
     Food *food = [self.instance fetchFoodReport:ndbno];
     
-    XCTAssert([food.name isEqualToString:@"Cheese, cheddar"],@"Food name doesn't match");
-    XCTAssert([food.ndbno isEqualToString:@"01009"], @"Food ndbno doesn't match");
+    XCTAssert([food.getName isEqualToString:@"Cheese, cheddar"],@"Food name doesn't match");
+    XCTAssert([food.getNdbno isEqualToString:@"01009"], @"Food ndbno doesn't match");
 }
 
 - (void)testFetchFoodReport_nilParam {
@@ -62,7 +61,7 @@
     FoodListItem *firstItem = (FoodListItem*)foodList[0];
     
     XCTAssert([foodList count] == maxResults.intValue);
-    XCTAssert([firstItem.name isEqualToString:@"Abiyuch, raw"]);
+    XCTAssert([firstItem.getName isEqualToString:@"Abiyuch, raw"]);
 }
 
 - (void)testFetchFoodList_food_noMaxNoOffset {
@@ -72,7 +71,7 @@
     FoodListItem *firstItem = (FoodListItem*)foodList[0];
 
     XCTAssert([foodList count] == 100);
-    XCTAssert([firstItem.name isEqualToString:@"Abiyuch, raw"]);
+    XCTAssert([firstItem.getName isEqualToString:@"Abiyuch, raw"]);
 }
 
 - (void)testFetchFoodList_food_offset {
@@ -83,7 +82,7 @@
     FoodListItem *firstItem = (FoodListItem*)foodList[0];
     
     XCTAssert([foodList count] == 100);
-    XCTAssert([firstItem.name isEqualToString:@"Acerola, (west indian cherry), raw"]);
+    XCTAssert([firstItem.getName isEqualToString:@"Acerola, (west indian cherry), raw"]);
 }
 
 
@@ -95,7 +94,7 @@
     FoodListItem *firstItem = (FoodListItem*)foodList[0];
     
     XCTAssert([foodList count] == maxResults.intValue);
-    XCTAssert([firstItem.name isEqualToString:@"Abiyuch, raw"]);
+    XCTAssert([firstItem.getName isEqualToString:@"Abiyuch, raw"]);
 }
 
 - (void)testFetchFoodList_nutrient {
@@ -105,7 +104,7 @@
     NSArray *foodList = [self.instance fetchFoodList:&foodType offsetResults:offset];
     FoodListItem *firstItem = (FoodListItem*)foodList[0];
     
-    XCTAssert([firstItem.name isEqualToString:@"(+)-Catechin"]);
+    XCTAssert([firstItem.getName isEqualToString:@"(+)-Catechin"]);
 }
 
 - (void)testFetchFoodList_nil {

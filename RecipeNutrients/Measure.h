@@ -10,20 +10,12 @@
 
 @interface Measure : NSObject
 
-@property (strong, nonatomic) NSString *eqv;
-@property (strong, nonatomic) NSString *label;
-@property (nonatomic) int qty;
-@property (nonatomic) float value;
-
 -(instancetype)initWithJson:(NSDictionary*)json;
+
+-(NSString*)getEquivalent;
+-(NSString*)getLabel;
+-(int)getQuantity;
+-(float)getValue;
 
 @end
 
-/*
- {
- eqv = 148;
- label = large;
- qty = 1;
- value = "131.99";
- },
- */

@@ -127,4 +127,33 @@
     return [self fetchFoodList:listType maxResults:@"100" offsetResults:@"0"];
 }
 
+#pragma mark - Search For Food
+-(NSArray*)searchForFood:(NSString*)searchQuery foodGroup:(NSString*)foodGroup maxResults:(NSString*)maxResults offsetResults:(NSString*)offset {
+    
+    NSString *endpoint = self.httpEndPointSearch;
+    
+    NSDictionary *param = @{@"q" : searchQuery,
+                            @"fg" : foodGroup,
+                            @"max" : maxResults,
+                            @"offset" : offset,
+                            @"format" : @"JSON"
+                            };
+    
+    __block NSArray *searchResults = nil;
+    
+    [[NetworkController sharedInstance] makeApiGetRequest:endpoint
+                                           withParameters:param
+                                    withCompletionHandler:^(NSObject *results) {
+                                        if (results != nil) {
+                                            NSDictionary *result = (NSDictionary*)results;
+                                            NSDictionary *listResults = (NSDictionary*)result[@"list"];
+                                            
+                                            //searchResults set
+//                                            NSLog(@"%@", listResult);
+                                            
+                                        }
+                                    }];
+    return searchResults;
+}
+
 @end

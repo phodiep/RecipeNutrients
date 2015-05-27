@@ -22,12 +22,12 @@ typedef enum {
     f, n, ns, nr, g
 } ListType;
 
-@property (strong, nonatomic) NSString *idno;
-@property (strong, nonatomic) NSString *name;
-
 -(instancetype)initWithJson:(NSDictionary*)json;
 -(NSArray*)parseMultipleWithJson:(NSArray*)json;
 
 +(NSString*)listTypeToString:(ListType)listType;
+
+-(NSString*)getId;
+-(NSString*)getName;
 
 @end

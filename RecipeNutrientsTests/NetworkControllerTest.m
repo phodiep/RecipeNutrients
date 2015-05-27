@@ -42,8 +42,8 @@
 
         Food *food = [[Food alloc] initWithJson:(NSDictionary*)report[@"food"]];
         
-        XCTAssert([food.name isEqualToString:@"Cheese, cheddar"],@"Food name doesn't match");
-        XCTAssert([food.ndbno isEqualToString:@"01009"], @"Food ndbno doesn't match");
+        XCTAssert([food.getName isEqualToString:@"Cheese, cheddar"],@"Food name doesn't match");
+        XCTAssert([food.getNdbno isEqualToString:@"01009"], @"Food ndbno doesn't match");
         
     }];
 }
