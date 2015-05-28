@@ -26,6 +26,7 @@
 		1DF99FA71B0E79D0002C8BF8 /* UsdaClientTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF99FA61B0E79D0002C8BF8 /* UsdaClientTest.m */; };
 		1DF99FAA1B14FEC9002C8BF8 /* Measure.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF99FA91B14FEC9002C8BF8 /* Measure.m */; };
 		1DF99FAD1B155684002C8BF8 /* FoodListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF99FAC1B155684002C8BF8 /* FoodListItem.m */; };
+		1DF99FB01B168773002C8BF8 /* SearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF99FAF1B168773002C8BF8 /* SearchResult.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,8 @@
 		1DF99FA91B14FEC9002C8BF8 /* Measure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Measure.m; sourceTree = "<group>"; };
 		1DF99FAB1B155684002C8BF8 /* FoodListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodListItem.h; sourceTree = "<group>"; };
 		1DF99FAC1B155684002C8BF8 /* FoodListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodListItem.m; sourceTree = "<group>"; };
+		1DF99FAE1B168773002C8BF8 /* SearchResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResult.h; sourceTree = "<group>"; };
+		1DF99FAF1B168773002C8BF8 /* SearchResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResult.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +170,8 @@
 				1DF99FA91B14FEC9002C8BF8 /* Measure.m */,
 				1DF99FAB1B155684002C8BF8 /* FoodListItem.h */,
 				1DF99FAC1B155684002C8BF8 /* FoodListItem.m */,
+				1DF99FAE1B168773002C8BF8 /* SearchResult.h */,
+				1DF99FAF1B168773002C8BF8 /* SearchResult.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -300,6 +305,7 @@
 				1DF99F951B0D2B33002C8BF8 /* ApiKeys.m in Sources */,
 				1DF99FA51B0D48CF002C8BF8 /* UsdaClient.m in Sources */,
 				1DF99FAD1B155684002C8BF8 /* FoodListItem.m in Sources */,
+				1DF99FB01B168773002C8BF8 /* SearchResult.m in Sources */,
 				1DF99F711B0D2AA9002C8BF8 /* ViewController.m in Sources */,
 				1DF99FAA1B14FEC9002C8BF8 /* Measure.m in Sources */,
 				1DF99F9A1B0D2F33002C8BF8 /* NetworkController.m in Sources */,

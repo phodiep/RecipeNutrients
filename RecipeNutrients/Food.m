@@ -15,6 +15,7 @@
 @property (strong, nonatomic) NSString *ndbno;
 @property (strong, nonatomic) NSArray *nutrientsArray;
 @property (strong, nonatomic) NSString *nutrients;
+@property (strong, nonatomic) NSString *fg;
 
 @end
 
@@ -24,10 +25,30 @@
     self = [super init];
     
     if (self) {
+        if (json == nil) {
+            return nil;
+        }
+        
         [self setValuesForKeysWithDictionary:json];
         [self parseNutrients];
+    
     }
     return self;
+}
+
+-(NSArray*)parseMultipleWithJson:(NSArray*)json {
+    if (json == nil) {
+        return nil;
+    }
+    
+    NSMutableArray *parsedItems = [[NSMutableArray alloc] init];
+    
+    for (NSDictionary *entry in json) {
+        Food *food = [[Food alloc] initWithJson:entry];
+        [parsedItems addObject:food];
+    }
+    
+    return parsedItems;
 }
 
 -(void)parseNutrients {
@@ -53,7 +74,9 @@
     return self.nutrientsArray;
 }
 
-
+-(NSString*)getFoodGroup {
+    return self.fg;
+}
 
 @end
 

@@ -16,10 +16,12 @@
 @property (strong, nonatomic) NSString *httpEndPointNutrientReports;
 @property (strong, nonatomic) NSString *httpEndPointSearch;
 
+@property (strong, nonatomic) NSString *defaultMaxResult;
+@property (strong, nonatomic) NSString *defaultOffset;
+
 @end
 
 @implementation UsdaClient
-
 +(id)sharedService {
     static UsdaClient *mySharedService = nil;
     static dispatch_once_t onceToken;
@@ -55,6 +57,20 @@
         _httpEndPointSearch = @"http://api.nal.usda.gov/usda/ndb/search/";
     }
     return _httpEndPointSearch;
+}
+
+-(NSString *)defaultMaxResult {
+    if (_defaultMaxResult == nil) {
+        _defaultMaxResult = @"1500";
+    }
+    return _defaultMaxResult;
+}
+
+-(NSString*)defaultOffset {
+    if (_defaultOffset == nil) {
+        _defaultOffset = @"0";
+    }
+    return _defaultOffset;
 }
 
 #pragma mark - Fetch Food Report
@@ -109,22 +125,21 @@
                                             NSDictionary *listResult = (NSDictionary*)result[@"list"];
                                             
                                             foodList = [[FoodListItem alloc] parseMultipleWithJson:listResult[@"item"]];
-                                            
                                         }
                                     }];
     return foodList;
 }
 
 -(NSArray*)fetchFoodList:(ListType*)listType offsetResults:(NSString*)offset {
-    return [self fetchFoodList:listType maxResults:@"100" offsetResults:offset];
+    return [self fetchFoodList:listType maxResults:self.defaultMaxResult offsetResults:offset];
 }
 
 -(NSArray*)fetchFoodList:(ListType*)listType maxResults:(NSString*)maxResults {
-    return [self fetchFoodList:listType maxResults:maxResults offsetResults:@"0"];
+    return [self fetchFoodList:listType maxResults:maxResults offsetResults:self.defaultOffset];
 }
 
 -(NSArray*)fetchFoodList:(ListType*)listType {
-    return [self fetchFoodList:listType maxResults:@"100" offsetResults:@"0"];
+    return [self fetchFoodList:listType maxResults:self.defaultMaxResult offsetResults:self.defaultOffset];
 }
 
 #pragma mark - Search For Food
@@ -139,8 +154,8 @@
                             @"format" : @"JSON"
                             };
     
-    __block NSArray *searchResults = nil;
-    
+    __block NSMutableArray *searchResults = [[NSMutableArray alloc] init];
+
     [[NetworkController sharedInstance] makeApiGetRequest:endpoint
                                            withParameters:param
                                     withCompletionHandler:^(NSObject *results) {
@@ -148,12 +163,50 @@
                                             NSDictionary *result = (NSDictionary*)results;
                                             NSDictionary *listResults = (NSDictionary*)result[@"list"];
                                             
-                                            //searchResults set
-//                                            NSLog(@"%@", listResult);
+                                            NSArray *itemJson = (NSArray*)listResults[@"item"];
                                             
+                                            if ([itemJson count]>0) {
+                                                
+                                                [searchResults addObjectsFromArray: [[SearchResult alloc] parseMultipleWithJson:itemJson]];
+                                                
+                                                NSString *newOffset = [NSString stringWithFormat:@"%d",
+                                                                       maxResults.intValue + offset.intValue];
+                                                
+                                                [searchResults addObjectsFromArray:[self searchForFood:searchQuery foodGroup:foodGroup maxResults:maxResults offsetResults:newOffset]];
+                                            }
                                         }
                                     }];
     return searchResults;
 }
+
+-(NSArray*)searchForFood:(NSString*)searchQuery foodGroup:(NSString*)foodGroup {
+    return [self searchForFood:searchQuery
+                     foodGroup:foodGroup
+                    maxResults:self.defaultMaxResult
+                 offsetResults:self.defaultOffset];
+}
+
+-(NSArray*)searchForFood:(NSString*)searchQuery foodGroup:(NSString*)foodGroup offsetResults:(NSString*)offset {
+    return [self searchForFood:searchQuery
+                     foodGroup:foodGroup
+                    maxResults:self.defaultMaxResult
+                 offsetResults:offset];
+}
+
+-(NSArray*)searchForFood:(NSString*)searchQuery offsetResults:(NSString*)offset {
+    return [self searchForFood:searchQuery
+                     foodGroup:@""
+                    maxResults:self.defaultMaxResult
+                 offsetResults:offset];
+}
+
+-(NSArray*)searchForFood:(NSString*)searchQuery {
+    return [self searchForFood:@""
+                     foodGroup:@""
+                    maxResults:self.defaultMaxResult
+                 offsetResults:self.defaultOffset];
+    
+}
+
 
 @end
