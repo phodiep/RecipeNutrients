@@ -27,6 +27,9 @@
 		1DF99FAA1B14FEC9002C8BF8 /* Measure.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF99FA91B14FEC9002C8BF8 /* Measure.m */; };
 		1DF99FAD1B155684002C8BF8 /* FoodListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF99FAC1B155684002C8BF8 /* FoodListItem.m */; };
 		1DF99FB01B168773002C8BF8 /* SearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF99FAF1B168773002C8BF8 /* SearchResult.m */; };
+		1DF99FB91B17977E002C8BF8 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF99FB81B17977E002C8BF8 /* SearchViewController.m */; };
+		1DF99FBC1B17978A002C8BF8 /* RecipesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF99FBB1B17978A002C8BF8 /* RecipesViewController.m */; };
+		1DF99FBF1B179795002C8BF8 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF99FBE1B179795002C8BF8 /* SettingsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +77,12 @@
 		1DF99FAC1B155684002C8BF8 /* FoodListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodListItem.m; sourceTree = "<group>"; };
 		1DF99FAE1B168773002C8BF8 /* SearchResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResult.h; sourceTree = "<group>"; };
 		1DF99FAF1B168773002C8BF8 /* SearchResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResult.m; sourceTree = "<group>"; };
+		1DF99FB71B17977E002C8BF8 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		1DF99FB81B17977E002C8BF8 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		1DF99FBA1B17978A002C8BF8 /* RecipesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipesViewController.h; sourceTree = "<group>"; };
+		1DF99FBB1B17978A002C8BF8 /* RecipesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipesViewController.m; sourceTree = "<group>"; };
+		1DF99FBD1B179795002C8BF8 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		1DF99FBE1B179795002C8BF8 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,7 +130,6 @@
 				1DF99F921B0D2AFA002C8BF8 /* Controllers */,
 				1DF99F691B0D2AA9002C8BF8 /* AppDelegate.h */,
 				1DF99F6A1B0D2AA9002C8BF8 /* AppDelegate.m */,
-				1DF99F6C1B0D2AA9002C8BF8 /* RecipeNutrients.xcdatamodeld */,
 				1DF99F651B0D2AA9002C8BF8 /* Supporting Files */,
 			);
 			path = RecipeNutrients;
@@ -160,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				1DF99F751B0D2AA9002C8BF8 /* Images.xcassets */,
+				1DF99F6C1B0D2AA9002C8BF8 /* RecipeNutrients.xcdatamodeld */,
 				1DF99F931B0D2B33002C8BF8 /* ApiKeys.h */,
 				1DF99F941B0D2B33002C8BF8 /* ApiKeys.m */,
 				1DF99F9D1B0D3DEF002C8BF8 /* Food.h */,
@@ -194,6 +203,12 @@
 				1DF99F991B0D2F33002C8BF8 /* NetworkController.m */,
 				1DF99FA31B0D48CF002C8BF8 /* UsdaClient.h */,
 				1DF99FA41B0D48CF002C8BF8 /* UsdaClient.m */,
+				1DF99FB71B17977E002C8BF8 /* SearchViewController.h */,
+				1DF99FB81B17977E002C8BF8 /* SearchViewController.m */,
+				1DF99FBA1B17978A002C8BF8 /* RecipesViewController.h */,
+				1DF99FBB1B17978A002C8BF8 /* RecipesViewController.m */,
+				1DF99FBD1B179795002C8BF8 /* SettingsViewController.h */,
+				1DF99FBE1B179795002C8BF8 /* SettingsViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -300,15 +315,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DF99F6B1B0D2AA9002C8BF8 /* AppDelegate.m in Sources */,
+				1DF99FB91B17977E002C8BF8 /* SearchViewController.m in Sources */,
 				1DF99F9F1B0D3DEF002C8BF8 /* Food.m in Sources */,
 				1DF99F681B0D2AA9002C8BF8 /* main.m in Sources */,
 				1DF99F951B0D2B33002C8BF8 /* ApiKeys.m in Sources */,
 				1DF99FA51B0D48CF002C8BF8 /* UsdaClient.m in Sources */,
+				1DF99FBC1B17978A002C8BF8 /* RecipesViewController.m in Sources */,
 				1DF99FAD1B155684002C8BF8 /* FoodListItem.m in Sources */,
 				1DF99FB01B168773002C8BF8 /* SearchResult.m in Sources */,
 				1DF99F711B0D2AA9002C8BF8 /* ViewController.m in Sources */,
 				1DF99FAA1B14FEC9002C8BF8 /* Measure.m in Sources */,
 				1DF99F9A1B0D2F33002C8BF8 /* NetworkController.m in Sources */,
+				1DF99FBF1B179795002C8BF8 /* SettingsViewController.m in Sources */,
 				1DF99FA21B0D3EA2002C8BF8 /* Nutrient.m in Sources */,
 				1DF99F6E1B0D2AA9002C8BF8 /* RecipeNutrients.xcdatamodeld in Sources */,
 			);

@@ -41,13 +41,13 @@
 
 - (void)testFetchFoodReport_nilParam {
     Food *food = [self.instance fetchFoodReport:nil];
-    XCTAssert(food == nil);
+    XCTAssert(food == nil, @"Food ndbno is required");
 }
 
 - (void)testFetchFoodReport_badParam {
     NSString *ndbno = @"some random string";
     Food *food = [self.instance fetchFoodReport:ndbno];
-    XCTAssert(food == nil);
+    XCTAssert(food == nil, @"'some random string' should not be a valid ndbno");
 }
 
 

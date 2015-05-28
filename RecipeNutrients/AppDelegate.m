@@ -7,8 +7,13 @@
 //
 
 #import "AppDelegate.h"
+#import "SearchViewController.h"
+#import "RecipesViewController.h"
+#import "SettingsViewController.h"
 
 @interface AppDelegate ()
+
+@property (strong, nonatomic) UITabBarController *tabBar;
 
 @end
 
@@ -16,8 +21,39 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    [self.window makeKeyAndVisible];
+    
+    [self setupTabBar];
+    self.window.rootViewController = self.tabBar;
+    
     return YES;
+}
+
+-(void)setupTabBar {
+    self.tabBar = [[UITabBarController alloc] init];
+    
+    //quick search
+    SearchViewController *searchVC = [[SearchViewController alloc] init];
+    searchVC.tabBarItem.title = @"Search";
+    searchVC.tabBarItem.image = [UIImage imageNamed:@"magnifier12"];
+    
+    //recipes
+    RecipesViewController *recipesVC = [[RecipesViewController alloc] init];
+    recipesVC.tabBarItem.title = @"Recipes";
+    recipesVC.tabBarItem.image = [UIImage imageNamed:@"recipes3"];
+    
+    //settings
+    SettingsViewController *settingsVC = [[SettingsViewController alloc] init];
+    settingsVC.tabBarItem.title = @"Settings";
+    settingsVC.tabBarItem.image = [UIImage imageNamed:@"settings48"];
+    
+    self.tabBar.viewControllers = @[searchVC,
+                                    recipesVC,
+                                    settingsVC];
+    
+    self.tabBar.view.autoresizingMask = UIViewAutoresizingFlexibleHeight;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
