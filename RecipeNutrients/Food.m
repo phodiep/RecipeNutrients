@@ -13,9 +13,9 @@
 
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *ndbno;
-@property (strong, nonatomic) NSArray *nutrientsArray;
-@property (strong, nonatomic) NSString *nutrients;
+@property (strong, nonatomic) NSArray *nutrients;
 @property (strong, nonatomic) NSString *fg;
+@property (strong, nonatomic) NSDictionary *nutrientsDict;
 
 @end
 
@@ -29,9 +29,13 @@
             return nil;
         }
         
+        if (json[@"ndbno"] == nil) {
+            return nil;
+        }
+
         [self setValuesForKeysWithDictionary:json];
         [self parseNutrients];
-    
+
     }
     return self;
 }
@@ -45,21 +49,28 @@
     
     for (NSDictionary *entry in json) {
         Food *food = [[Food alloc] initWithJson:entry];
-        [parsedItems addObject:food];
+        
+        if (food != nil) {
+            [parsedItems addObject:food];
+        }
+    }
+    
+    if ([parsedItems count] == 0) {
+        return nil;
     }
     
     return parsedItems;
 }
 
+
 -(void)parseNutrients {
-    NSArray *rawNutrients = (NSArray*) self.nutrients;
     
-    NSMutableArray *parsedNutrients = [[NSMutableArray alloc] init];
-    for (id item in rawNutrients) {
-        [parsedNutrients addObject:[[Nutrient alloc]initWithJson:(NSDictionary*)item]];
+    if ([self.nutrients count] > 0) {
+    
+        NSArray *parsedNutrients = [[Nutrient alloc] parseMultipleWithJson: self.nutrients];
+        self.nutrientsDict = [NSDictionary dictionaryWithObjects:parsedNutrients forKeys:[parsedNutrients valueForKey:@"getNutrientId"]];
+        
     }
-    
-    self.nutrientsArray = [[NSArray alloc] initWithArray:parsedNutrients];
 }
 
 -(NSString*)getName {
@@ -70,8 +81,8 @@
     return self.ndbno;
 }
 
--(NSArray*)getNutrients {
-    return self.nutrientsArray;
+-(NSDictionary*)getNutrients {
+    return self.nutrientsDict;
 }
 
 -(NSString*)getFoodGroup {

@@ -16,8 +16,9 @@
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *unit;
 @property (strong, nonatomic) NSString *value;
+@property (strong, nonatomic) NSString *gm;
 @property (strong, nonatomic) NSDictionary *measurements;
-@property (strong, nonatomic) NSString *measures;
+@property (strong, nonatomic) NSArray *measures;
 
 @end
 
@@ -26,23 +27,48 @@
 -(instancetype)initWithJson:(NSDictionary*)json {
     self = [super init];
     if (self) {
-        [self setValuesForKeysWithDictionary:json];
         
+        if (json == nil) {
+            return nil;
+        }
+        
+        if (json[@"nutrient_id"] == nil) {
+            return nil;
+        }
+        
+        [self setValuesForKeysWithDictionary:json];
         [self parseMeasures];
     }
     return self;
 }
 
--(void)parseMeasures {
-    NSArray *rawMeasures = (NSArray*) self.measures;
-    NSMutableDictionary *parsedMeasures = [[NSMutableDictionary alloc] init];
-        
-    for (id item in rawMeasures) {
-        Measure *measure = [[Measure alloc] initWithJson:item];
-        [parsedMeasures setObject:measure forKey:measure.getLabel];
+-(NSArray*)parseMultipleWithJson:(NSArray*)json {
+    if ([json count] == 0) {
+        return nil;
     }
     
-    self.measurements = parsedMeasures;
+    NSMutableArray *parsedItems = [[NSMutableArray alloc] init];
+    
+    for (NSDictionary *entry in json) {
+        Nutrient *nutrient = [[Nutrient alloc] initWithJson:entry];
+        [parsedItems addObject:nutrient];
+    }
+    
+    return parsedItems;
+}
+
+
+-(void)parseMeasures {
+    if ([self.measures count] > 0) {
+        NSMutableDictionary *parsedMeasures = [[NSMutableDictionary alloc] init];
+        
+        for (id item in self.measures) {
+            Measure *measure = [[Measure alloc] initWithJson:item];
+            [parsedMeasures setObject:measure forKey:measure.getLabel];
+        }
+    
+        self.measurements = parsedMeasures;
+    }
 }
 
 -(NSArray*)getMeasurementOptions {
@@ -67,6 +93,10 @@
 
 -(NSString*)getValue {
     return self.value;
+}
+
+-(NSString*)get100GramEquivalentValue {
+    return self.gm;
 }
 
 -(NSDictionary*)getMeasurements {

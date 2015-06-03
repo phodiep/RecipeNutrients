@@ -32,6 +32,8 @@
 		1DF99FBF1B179795002C8BF8 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF99FBE1B179795002C8BF8 /* SettingsViewController.m */; };
 		1DF99FC81B1D12F8002C8BF8 /* FoodTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF99FC71B1D12F8002C8BF8 /* FoodTests.m */; };
 		1DF99FD01B1DF5D6002C8BF8 /* foodSample.json in Resources */ = {isa = PBXBuildFile; fileRef = 1DF99FCD1B1D1B5C002C8BF8 /* foodSample.json */; };
+		1DF99FD61B1F8E3D002C8BF8 /* nutrientSample.json in Resources */ = {isa = PBXBuildFile; fileRef = 1DF99FD51B1F8E3D002C8BF8 /* nutrientSample.json */; };
+		1DF99FD81B1F8F97002C8BF8 /* NutrientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF99FD71B1F8F97002C8BF8 /* NutrientTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +89,8 @@
 		1DF99FBE1B179795002C8BF8 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		1DF99FC71B1D12F8002C8BF8 /* FoodTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodTests.m; sourceTree = "<group>"; };
 		1DF99FCD1B1D1B5C002C8BF8 /* foodSample.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = foodSample.json; sourceTree = "<group>"; };
+		1DF99FD51B1F8E3D002C8BF8 /* nutrientSample.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nutrientSample.json; sourceTree = "<group>"; };
+		1DF99FD71B1F8F97002C8BF8 /* NutrientTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NutrientTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +161,7 @@
 				1DF99F9B1B0D3AFB002C8BF8 /* NetworkControllerTest.m */,
 				1DF99FA61B0E79D0002C8BF8 /* UsdaClientTest.m */,
 				1DF99FC71B1D12F8002C8BF8 /* FoodTests.m */,
+				1DF99FD71B1F8F97002C8BF8 /* NutrientTests.m */,
 			);
 			path = RecipeNutrientsTests;
 			sourceTree = "<group>";
@@ -166,6 +171,7 @@
 			children = (
 				1DF99FCD1B1D1B5C002C8BF8 /* foodSample.json */,
 				1DF99F831B0D2AA9002C8BF8 /* Info.plist */,
+				1DF99FD51B1F8E3D002C8BF8 /* nutrientSample.json */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -310,6 +316,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DF99FD61B1F8E3D002C8BF8 /* nutrientSample.json in Resources */,
 				1DF99FD01B1DF5D6002C8BF8 /* foodSample.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -345,6 +352,7 @@
 			files = (
 				1DF99F971B0D2C34002C8BF8 /* ApiKeysTest.m in Sources */,
 				1DF99F9C1B0D3AFB002C8BF8 /* NetworkControllerTest.m in Sources */,
+				1DF99FD81B1F8F97002C8BF8 /* NutrientTests.m in Sources */,
 				1DF99F851B0D2AA9002C8BF8 /* RecipeNutrientsTests.m in Sources */,
 				1DF99FC81B1D12F8002C8BF8 /* FoodTests.m in Sources */,
 				1DF99FA71B0E79D0002C8BF8 /* UsdaClientTest.m in Sources */,

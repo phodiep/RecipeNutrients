@@ -11,6 +11,8 @@
 @interface Nutrient : NSObject
 
 -(instancetype)initWithJson:(NSDictionary*)json;
+-(NSArray*)parseMultipleWithJson:(NSArray*)json;
+
 -(NSArray*)getMeasurementOptions;
 
 -(NSString*)getGroup;
@@ -18,6 +20,7 @@
 -(NSString*)getName;
 -(NSString*)getUnit;
 -(NSString*)getValue;
+-(NSString*)get100GramEquivalentValue;
 -(NSDictionary*)getMeasurements;
 
 @end
