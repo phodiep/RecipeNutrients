@@ -22,10 +22,10 @@
 -(NSArray*)fetchFoodList:(ListType*)listType offsetResults:(NSString*)offset;
 -(NSArray*)fetchFoodList:(ListType*)listType;
 
--(NSArray*)searchForFood:(NSString*)searchQuery foodGroup:(NSString*)foodGroup maxResults:(NSString*)maxResults offsetResults:(NSString*)offset;
--(NSArray*)searchForFood:(NSString*)searchQuery foodGroup:(NSString*)foodGroup;
--(NSArray*)searchForFood:(NSString*)searchQuery foodGroup:(NSString*)foodGroup offsetResults:(NSString*)offset;
--(NSArray*)searchForFood:(NSString*)searchQuery offsetResults:(NSString*)offset;
--(NSArray*)searchForFood:(NSString*)searchQuery;
+-(NSArray*)searchForFood:(NSString*)searchQuery foodGroup:(NSString*)foodGroup maxResults:(NSString*)maxResults offsetResults:(NSString*)offset getAllResults:(BOOL)all;
+-(NSArray*)searchForFood:(NSString*)searchQuery foodGroup:(NSString*)foodGroup getAllResults:(BOOL)all;
+-(NSArray*)searchForFood:(NSString*)searchQuery foodGroup:(NSString*)foodGroup offsetResults:(NSString*)offset getAllResults:(BOOL)all;
+-(NSArray*)searchForFood:(NSString*)searchQuery offsetResults:(NSString*)offset getAllResults:(BOOL)all;
+-(NSArray*)searchForFood:(NSString*)searchQuery getAllResults:(BOOL)all;
 
 @end

@@ -143,7 +143,7 @@
 }
 
 #pragma mark - Search For Food
--(NSArray*)searchForFood:(NSString*)searchQuery foodGroup:(NSString*)foodGroup maxResults:(NSString*)maxResults offsetResults:(NSString*)offset {
+-(NSArray*)searchForFood:(NSString*)searchQuery foodGroup:(NSString*)foodGroup maxResults:(NSString*)maxResults offsetResults:(NSString*)offset getAllResults:(BOOL)allResults {
     
     NSString *endpoint = self.httpEndPointSearch;
     
@@ -172,39 +172,45 @@
                                                 NSString *newOffset = [NSString stringWithFormat:@"%d",
                                                                        maxResults.intValue + offset.intValue];
                                                 
-                                                [searchResults addObjectsFromArray:[self searchForFood:searchQuery foodGroup:foodGroup maxResults:maxResults offsetResults:newOffset]];
+                                                if (allResults) {
+                                                    [searchResults addObjectsFromArray:[self searchForFood:searchQuery foodGroup:foodGroup maxResults:maxResults offsetResults:newOffset getAllResults:allResults]];
+                                                }
                                             }
                                         }
                                     }];
     return searchResults;
 }
 
--(NSArray*)searchForFood:(NSString*)searchQuery foodGroup:(NSString*)foodGroup {
+-(NSArray*)searchForFood:(NSString*)searchQuery foodGroup:(NSString*)foodGroup getAllResults:(BOOL)all {
     return [self searchForFood:searchQuery
                      foodGroup:foodGroup
                     maxResults:self.defaultMaxResult
-                 offsetResults:self.defaultOffset];
+                 offsetResults:self.defaultOffset
+                 getAllResults:all];
 }
 
--(NSArray*)searchForFood:(NSString*)searchQuery foodGroup:(NSString*)foodGroup offsetResults:(NSString*)offset {
+-(NSArray*)searchForFood:(NSString*)searchQuery foodGroup:(NSString*)foodGroup offsetResults:(NSString*)offset getAllResults:(BOOL)all {
     return [self searchForFood:searchQuery
                      foodGroup:foodGroup
                     maxResults:self.defaultMaxResult
-                 offsetResults:offset];
+                 offsetResults:offset
+                 getAllResults:all];
 }
 
--(NSArray*)searchForFood:(NSString*)searchQuery offsetResults:(NSString*)offset {
+-(NSArray*)searchForFood:(NSString*)searchQuery offsetResults:(NSString*)offset getAllResults:(BOOL)all {
     return [self searchForFood:searchQuery
                      foodGroup:@""
                     maxResults:self.defaultMaxResult
-                 offsetResults:offset];
+                 offsetResults:offset
+                 getAllResults:all];
 }
 
--(NSArray*)searchForFood:(NSString*)searchQuery {
+-(NSArray*)searchForFood:(NSString*)searchQuery getAllResults:(BOOL)all {
     return [self searchForFood:@""
                      foodGroup:@""
                     maxResults:self.defaultMaxResult
-                 offsetResults:self.defaultOffset];
+                 offsetResults:self.defaultOffset
+                 getAllResults:all];
     
 }
 

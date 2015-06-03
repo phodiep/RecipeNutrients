@@ -128,7 +128,8 @@
     NSArray *searchResults = [self.instance searchForFood:searchQuery
                                                 foodGroup:foodGroup
                                                maxResults:maxResults
-                                            offsetResults:offset];
+                                            offsetResults:offset
+                                            getAllResults:true];
     XCTAssert([searchResults count] > 0);
 }
 
@@ -136,22 +137,33 @@
     NSString *searchQuery = @"carrots";
     NSString *foodGroup = @"";
     NSArray *searchResults = [self.instance searchForFood:searchQuery
-                                                foodGroup:foodGroup];
+                                                foodGroup:foodGroup
+                                            getAllResults:true];
     XCTAssert([searchResults count] > 0);
 }
 
 - (void)testSearch_noQueryString {
     NSString *searchQuery = @"";
-    NSArray *searchResults = [self.instance searchForFood:searchQuery];
+    NSArray *searchResults = [self.instance searchForFood:searchQuery
+                                            getAllResults:true];
 
     XCTAssert([searchResults count] > 4000);
+}
+
+- (void)testSearch_noQueryString_notAll {
+    NSString *searchQuery = @"";
+    NSArray *searchResults = [self.instance searchForFood:searchQuery
+                                            getAllResults:false];
+    
+    XCTAssert([searchResults count] == 1500);
 }
 
 - (void)testSearch_invalidFoodGroup {
     NSString *searchQuery = @"carrots";
     NSString *foodGroup = @"asdf";
     NSArray *searchResults = [self.instance searchForFood:searchQuery
-                                                foodGroup:foodGroup];
+                                                foodGroup:foodGroup
+                                            getAllResults:true];
     XCTAssert([searchResults count] == 0);
 }
 
@@ -163,7 +175,8 @@
     NSArray *searchResults = [self.instance searchForFood:searchQuery
                                                 foodGroup:foodGroup
                                                maxResults:maxResults
-                                            offsetResults:offset];
+                                            offsetResults:offset
+                                            getAllResults:true];
     XCTAssert([searchResults count] == 0);
 }
 
@@ -175,7 +188,8 @@
     NSArray *searchResults = [self.instance searchForFood:searchQuery
                                                 foodGroup:foodGroup
                                                maxResults:maxResults
-                                            offsetResults:offset];
+                                            offsetResults:offset
+                                            getAllResults:true];
     XCTAssert([searchResults count] == 0);
 }
 
