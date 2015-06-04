@@ -38,6 +38,8 @@
 		1DF99FDE1B1FDC90002C8BF8 /* measureSampleFoodReport.json in Resources */ = {isa = PBXBuildFile; fileRef = 1DF99FDD1B1FDC90002C8BF8 /* measureSampleFoodReport.json */; };
 		1DF99FE01B20E5E2002C8BF8 /* FoodListItemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF99FDF1B20E5E2002C8BF8 /* FoodListItemTests.m */; };
 		1DF99FE21B20E64E002C8BF8 /* foodListSample.json in Resources */ = {isa = PBXBuildFile; fileRef = 1DF99FE11B20E64E002C8BF8 /* foodListSample.json */; };
+		1DF99FE41B20ED7D002C8BF8 /* searchResultSample.json in Resources */ = {isa = PBXBuildFile; fileRef = 1DF99FE31B20ED7D002C8BF8 /* searchResultSample.json */; };
+		1DF99FE61B20ED9C002C8BF8 /* SearchResultTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF99FE51B20ED9C002C8BF8 /* SearchResultTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +101,8 @@
 		1DF99FDD1B1FDC90002C8BF8 /* measureSampleFoodReport.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = measureSampleFoodReport.json; sourceTree = "<group>"; };
 		1DF99FDF1B20E5E2002C8BF8 /* FoodListItemTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodListItemTests.m; sourceTree = "<group>"; };
 		1DF99FE11B20E64E002C8BF8 /* foodListSample.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = foodListSample.json; sourceTree = "<group>"; };
+		1DF99FE31B20ED7D002C8BF8 /* searchResultSample.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = searchResultSample.json; sourceTree = "<group>"; };
+		1DF99FE51B20ED9C002C8BF8 /* SearchResultTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +176,7 @@
 				1DF99FD71B1F8F97002C8BF8 /* NutrientTests.m */,
 				1DF99FDB1B1FDC4C002C8BF8 /* MeasureTests.m */,
 				1DF99FDF1B20E5E2002C8BF8 /* FoodListItemTests.m */,
+				1DF99FE51B20ED9C002C8BF8 /* SearchResultTests.m */,
 			);
 			path = RecipeNutrientsTests;
 			sourceTree = "<group>";
@@ -184,6 +189,7 @@
 				1DF99F831B0D2AA9002C8BF8 /* Info.plist */,
 				1DF99FD51B1F8E3D002C8BF8 /* nutrientSampleFoodReport.json */,
 				1DF99FDD1B1FDC90002C8BF8 /* measureSampleFoodReport.json */,
+				1DF99FE31B20ED7D002C8BF8 /* searchResultSample.json */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -331,6 +337,7 @@
 				1DF99FD61B1F8E3D002C8BF8 /* nutrientSampleFoodReport.json in Resources */,
 				1DF99FE21B20E64E002C8BF8 /* foodListSample.json in Resources */,
 				1DF99FD01B1DF5D6002C8BF8 /* foodSampleFoodReport.json in Resources */,
+				1DF99FE41B20ED7D002C8BF8 /* searchResultSample.json in Resources */,
 				1DF99FDE1B1FDC90002C8BF8 /* measureSampleFoodReport.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -371,6 +378,7 @@
 				1DF99FE01B20E5E2002C8BF8 /* FoodListItemTests.m in Sources */,
 				1DF99FDC1B1FDC4C002C8BF8 /* MeasureTests.m in Sources */,
 				1DF99FC81B1D12F8002C8BF8 /* FoodTests.m in Sources */,
+				1DF99FE61B20ED9C002C8BF8 /* SearchResultTests.m in Sources */,
 				1DF99FA71B0E79D0002C8BF8 /* UsdaClientTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

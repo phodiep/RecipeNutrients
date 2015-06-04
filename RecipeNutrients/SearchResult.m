@@ -26,10 +26,13 @@
             return nil;
         }
         
-        self.name = json[@"name"];
-        self.ndbno = json[@"ndbno"];
-        self.foodGroup = json[@"group"];
+        if (json[@"ndbno"] == nil) {
+            return nil;
+        }
         
+        // must replace 'group' with 'foodGroup' and remove 'offset' prior to setting properties
+        NSDictionary *newJson = [self replaceGroupKeyWithValidFoodGroup:json];
+        [self setValuesForKeysWithDictionary:newJson];
     }
     return self;
 }
@@ -43,11 +46,28 @@
     
     for (NSDictionary *entry in json) {
         SearchResult *searchResult = [[SearchResult alloc] initWithJson:entry];
-        [parsedItems addObject:searchResult];
+        
+        if (searchResult != nil) {
+            [parsedItems addObject:searchResult];
+        }
+    }
+    
+    if ([parsedItems count] == 0) {
+        return nil;
     }
     
     return parsedItems;
 
+}
+
+-(NSDictionary*)replaceGroupKeyWithValidFoodGroup:(NSDictionary*)oldDictionary {
+    NSMutableDictionary *newDictionary = [[NSMutableDictionary alloc] initWithDictionary:oldDictionary];
+    
+    newDictionary[@"foodGroup"] = newDictionary[@"group"];
+    [newDictionary removeObjectForKey:@"group"];
+    [newDictionary removeObjectForKey:@"offset"];
+    
+    return newDictionary;
 }
 
 -(NSString*)getName {
