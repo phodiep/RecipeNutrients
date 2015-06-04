@@ -21,11 +21,18 @@
     self = [super init];
     if (self) {
         
-//        can't use kvc because api uses 'id' as key'
-//        [self setValuesForKeysWithDictionary:json];
+        if (json == nil) {
+            return nil;
+        }
+        
+        if (json[@"id"] == nil) {
+            return nil;
+        }
+        
+        // must replace 'id' with 'idno' and remove 'offset' prior to setting properties
+        NSDictionary *newJson = [self replaceIdKeyWithValidIdno:json];
+        [self setValuesForKeysWithDictionary:newJson];
 
-        self.idno = json[@"id"];
-        self.name = json[@"name"];
     }
     return self;
 }
@@ -40,10 +47,26 @@
     for (NSDictionary* entry in json) {
         FoodListItem *item = [[FoodListItem alloc] initWithJson:entry];
         
-        [parsedItems addObject:item];
+        if (item != nil) {
+            [parsedItems addObject:item];
+        }
+    }
+    
+    if ([parsedItems count] == 0) {
+        return nil;
     }
     
     return parsedItems;
+}
+
+-(NSDictionary*)replaceIdKeyWithValidIdno:(NSDictionary*)oldDictionary {
+    NSMutableDictionary *newDictionary = [[NSMutableDictionary alloc] initWithDictionary:oldDictionary];
+    
+    newDictionary[@"idno"] = newDictionary[@"id"];
+    [newDictionary removeObjectForKey:@"id"];
+    [newDictionary removeObjectForKey:@"offset"];
+    
+    return newDictionary;
 }
 
 +(NSString*)listTypeToString:(ListType)listType {
