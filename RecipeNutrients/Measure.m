@@ -45,7 +45,10 @@
     
     for (NSDictionary *item in json) {
         Measure *measure = [[Measure alloc] initWithJson:item];
-        [parsedItems addObject:measure];
+        
+        if (measure != nil) {
+            [parsedItems addObject:measure];
+        }
     }
     
     if ([parsedItems count] == 0) {
