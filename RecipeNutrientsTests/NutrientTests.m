@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 #import "Nutrient.h"
+#import "Measure.h"
 
 @interface NutrientTests : XCTestCase
 
@@ -21,7 +22,7 @@
 - (void)setUp {
     [super setUp];
     
-    NSString *filePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"nutrientSample" ofType:@"json"];
+    NSString *filePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"nutrientSampleFoodReport" ofType:@"json"];
     NSString *fileContents = [[NSString alloc] initWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:NULL];
     NSData *data = [fileContents dataUsingEncoding:NSUTF8StringEncoding];
     NSObject *results = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
@@ -36,19 +37,94 @@
     [super tearDown];
 }
 
+#pragma mark - test single init
 - (void)testNutrient {
-    NSString *nutrient_id = @"269";
-    NSString *name = @"Sugars, total";
-    NSString *unit = @"g";
-    NSString *value = @"0.37";
-    NSString *gm = @"0.28";
-
-    XCTAssert([self.nutrient.getNutrientId isEqualToString:nutrient_id]);
-    XCTAssert([self.nutrient.getName isEqualToString:name]);
-    XCTAssert([self.nutrient.getUnit isEqualToString:unit]);
-    XCTAssert([self.nutrient.getValue isEqualToString:value]);
-    XCTAssert([self.nutrient.get100GramEquivalentValue isEqualToString:gm]);
+    XCTAssert([self.nutrient.getNutrientId isEqualToString:@"208"]);
+    XCTAssert([self.nutrient.getName isEqualToString:@"Energy"]);
+    XCTAssert([self.nutrient.getGroup isEqualToString:@"Proximates"]);
+    XCTAssert([self.nutrient.getUnit isEqualToString:@"kcal"]);
+    XCTAssert([self.nutrient.getValue isEqualToString:@"406"]);
+    XCTAssert([self.nutrient.getMeasurementOptions count] == 6);
 }
 
+- (void)testNutrientMeasurement {
+    Measure *measure = (Measure*)self.nutrient.getMeasurements[@"oz"];
+    XCTAssert([measure.getEquivalent isEqual: @28.35]);
+    XCTAssert([measure.getLabel isEqualToString:@"oz"]);
+    XCTAssert(measure.getQuantity == 1.0);
+    XCTAssert(measure.getValue == 115);
+}
 
+- (void)testNutrient_nilJson {
+    NSDictionary *json = nil;
+    
+    Nutrient *nutrient = [[Nutrient alloc] initWithJson:json];
+    
+    XCTAssert(nutrient == nil);
+}
+
+- (void)testNutrient_emptyJson {
+    NSDictionary *json = @{};
+    
+    Nutrient *nutrient = [[Nutrient alloc] initWithJson:json];
+    
+    XCTAssert(nutrient == nil);
+}
+
+- (void)testNutrient_invalidJson {
+    NSDictionary *json = @{@"testingString":@"non-valid object"};
+    
+    Nutrient *nutrient = [[Nutrient alloc] initWithJson:json];
+    
+    XCTAssert(nutrient == nil);
+}
+
+- (void)testNutrient_partialEmptyJson {
+    NSDictionary *json = @{@"nutrient_id":@"asdf"};
+    
+    Nutrient *nutrient = [[Nutrient alloc] initWithJson:json];
+    
+    XCTAssert(nutrient != nil);
+}
+
+#pragma mark - test multiple init
+- (void)testMutlipleNutrient_nilJson {
+    NSArray *json = nil;
+    
+    NSArray *nutrients = [[Nutrient alloc] parseMultipleWithJson:json];
+    
+    XCTAssert(nutrients == nil);
+}
+
+- (void)testMutlipleNutrient_emptyJson {
+    NSArray *json = @[];
+    
+    NSArray *nutrients = [[Nutrient alloc] parseMultipleWithJson:json];
+    
+    XCTAssert(nutrients == nil);
+}
+
+- (void)testMutlipleNutrient_partialEmptyJson {
+    NSArray *json = @[@{}, @{@"nutrient_id":@"testing"}, @{}];
+    
+    NSArray *nutrients = [[Nutrient alloc] parseMultipleWithJson:json];
+    
+    XCTAssert([nutrients count] == 1);
+}
+
+- (void)testMutlipleNutrient_invalidJson {
+    NSArray *json = @[@{@"nonvalidKey": @"random object"}];
+    
+    NSArray *nutrients = [[Nutrient alloc] parseMultipleWithJson:json];
+    
+    XCTAssert(nutrients == nil);
+}
+
+- (void)testMutlipleNutrient_partialInvalidJson {
+    NSArray *json = @[@{@"nonvalidKey": @"random object"}, @{@"nutrient_id":@"testing"}, @{}];
+    
+    NSArray *nutrients = [[Nutrient alloc] parseMultipleWithJson:json];
+    
+    XCTAssert([nutrients count] == 1);
+}
 @end

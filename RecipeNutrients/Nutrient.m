@@ -43,7 +43,7 @@
 }
 
 -(NSArray*)parseMultipleWithJson:(NSArray*)json {
-    if ([json count] == 0) {
+    if (json == nil) {
         return nil;
     }
     
@@ -51,7 +51,14 @@
     
     for (NSDictionary *entry in json) {
         Nutrient *nutrient = [[Nutrient alloc] initWithJson:entry];
-        [parsedItems addObject:nutrient];
+        
+        if (nutrient != nil) {
+            [parsedItems addObject:nutrient];
+        }
+    }
+    
+    if ([parsedItems count] == 0) {
+        return nil;
     }
     
     return parsedItems;
@@ -60,14 +67,10 @@
 
 -(void)parseMeasures {
     if ([self.measures count] > 0) {
-        NSMutableDictionary *parsedMeasures = [[NSMutableDictionary alloc] init];
         
-        for (id item in self.measures) {
-            Measure *measure = [[Measure alloc] initWithJson:item];
-            [parsedMeasures setObject:measure forKey:measure.getLabel];
-        }
-    
-        self.measurements = parsedMeasures;
+        NSArray *parsedMeasurements = [[Measure alloc] parseMultipleWithJson:self.measures];
+        self.measurements = [NSDictionary dictionaryWithObjects:parsedMeasurements forKeys:[parsedMeasurements valueForKey:@"getLabel"]];
+        
     }
 }
 

@@ -22,9 +22,37 @@
 -(instancetype)initWithJson:(NSDictionary*)json {
     self = [super init];
     if (self) {
+        
+        if (json == nil) {
+            return nil;
+        }
+        
+        if (json[@"label"] == nil) {
+            return nil;
+        }
+        
         [self setValuesForKeysWithDictionary:json];
     }
     return self;
+}
+
+-(NSArray*)parseMultipleWithJson:(NSArray*)json {
+    if (json == nil) {
+        return nil;
+    }
+    
+    NSMutableArray *parsedItems = [[NSMutableArray alloc] init];
+    
+    for (NSDictionary *item in json) {
+        Measure *measure = [[Measure alloc] initWithJson:item];
+        [parsedItems addObject:measure];
+    }
+    
+    if ([parsedItems count] == 0) {
+        return nil;
+    }
+    
+    return parsedItems;
 }
 
 -(NSString*)getEquivalent {

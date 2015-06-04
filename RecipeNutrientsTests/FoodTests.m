@@ -22,7 +22,7 @@
 - (void)setUp {
     [super setUp];
     
-    NSString *filePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"foodSample" ofType:@"json"];
+    NSString *filePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"foodSampleFoodReport" ofType:@"json"];
     NSString *fileContents = [[NSString alloc] initWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:NULL];
     NSData *data = [fileContents dataUsingEncoding:NSUTF8StringEncoding];
     NSObject *results = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
@@ -38,6 +38,7 @@
     [super tearDown];
 }
 
+#pragma mark - test single init
 - (void)testFood {
     XCTAssert([self.food.getName isEqualToString:@"Cheese, cheddar"]);
     XCTAssert([self.food.getNdbno isEqualToString:@"01009"]);
@@ -85,6 +86,7 @@
     XCTAssert(food.getNutrients == nil);
 }
 
+#pragma mark - test multiple init
 - (void)testMultipleFood_nilJson {
     NSArray *json = nil;
     NSArray *results = [[Food alloc] parseMultipleWithJson:json];

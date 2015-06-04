@@ -11,6 +11,7 @@
 @interface Measure : NSObject
 
 -(instancetype)initWithJson:(NSDictionary*)json;
+-(NSArray*)parseMultipleWithJson:(NSArray*)json;
 
 -(NSString*)getEquivalent;
 -(NSString*)getLabel;

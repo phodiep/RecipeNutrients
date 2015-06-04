@@ -1,0 +1,45 @@
+{
+    "nutrient_id": "208",
+    "name": "Energy",
+    "group": "Proximates",
+    "unit": "kcal",
+    "value": "406",
+    "measures": [
+                 {
+                 "label": "cup, diced",
+                 "eqv": 132.0,
+                 "qty": 1.0,
+                 "value": "536"
+                 },
+                 {
+                 "label": "cup, melted",
+                 "eqv": 244.0,
+                 "qty": 1.0,
+                 "value": "991"
+                 },
+                 {
+                 "label": "cup, shredded",
+                 "eqv": 113.0,
+                 "qty": 1.0,
+                 "value": "459"
+                 },
+                 {
+                 "label": "oz",
+                 "eqv": 28.35,
+                 "qty": 1.0,
+                 "value": "115"
+                 },
+                 {
+                 "label": "cubic inch",
+                 "eqv": 17.0,
+                 "qty": 1.0,
+                 "value": "69"
+                 },
+                 {
+                 "label": "slice (1 oz)",
+                 "eqv": 28.0,
+                 "qty": 1.0,
+                 "value": "114"
+                 }
+                 ]
+}
