@@ -9,6 +9,7 @@
 #import "SearchViewController.h"
 #import "UsdaClient.h"
 #import "SearchResult.h"
+#import "FoodDetailsViewController.h"
 
 @interface SearchViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
@@ -79,6 +80,17 @@
 }
 
 #pragma mark - UITableView Delegate
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    SearchResult *selectedItem = (SearchResult*)self.searchResults[indexPath.row];
+    Food *food = [[UsdaClient sharedService] fetchFoodReport:selectedItem.getNdbno];
+    
+    FoodDetailsViewController *foodVC = [[FoodDetailsViewController alloc] init];
+    foodVC.food = food;
+    
+    [self presentViewController:foodVC animated:true completion:nil];
+    
+}
+
 
 #pragma mark - UISearchBarDelegate
 -(BOOL)searchBar:(UISearchBar *)searchBar shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {

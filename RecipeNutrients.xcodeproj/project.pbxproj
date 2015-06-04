@@ -40,6 +40,9 @@
 		1DF99FE21B20E64E002C8BF8 /* foodListSample.json in Resources */ = {isa = PBXBuildFile; fileRef = 1DF99FE11B20E64E002C8BF8 /* foodListSample.json */; };
 		1DF99FE41B20ED7D002C8BF8 /* searchResultSample.json in Resources */ = {isa = PBXBuildFile; fileRef = 1DF99FE31B20ED7D002C8BF8 /* searchResultSample.json */; };
 		1DF99FE61B20ED9C002C8BF8 /* SearchResultTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF99FE51B20ED9C002C8BF8 /* SearchResultTests.m */; };
+		1DF99FE81B2102E8002C8BF8 /* FoodDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DF99FE71B2102E8002C8BF8 /* FoodDetailsView.xib */; };
+		1DF99FEB1B21038F002C8BF8 /* FoodDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF99FEA1B21038F002C8BF8 /* FoodDetailsViewController.m */; };
+		1DF99FEE1B210764002C8BF8 /* FoodDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF99FED1B210764002C8BF8 /* FoodDetailsView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +106,11 @@
 		1DF99FE11B20E64E002C8BF8 /* foodListSample.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = foodListSample.json; sourceTree = "<group>"; };
 		1DF99FE31B20ED7D002C8BF8 /* searchResultSample.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = searchResultSample.json; sourceTree = "<group>"; };
 		1DF99FE51B20ED9C002C8BF8 /* SearchResultTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultTests.m; sourceTree = "<group>"; };
+		1DF99FE71B2102E8002C8BF8 /* FoodDetailsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FoodDetailsView.xib; sourceTree = "<group>"; };
+		1DF99FE91B21038F002C8BF8 /* FoodDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodDetailsViewController.h; sourceTree = "<group>"; };
+		1DF99FEA1B21038F002C8BF8 /* FoodDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodDetailsViewController.m; sourceTree = "<group>"; };
+		1DF99FEC1B210764002C8BF8 /* FoodDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodDetailsView.h; sourceTree = "<group>"; };
+		1DF99FED1B210764002C8BF8 /* FoodDetailsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodDetailsView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,6 +228,9 @@
 			children = (
 				1DF99F771B0D2AA9002C8BF8 /* LaunchScreen.xib */,
 				1DF99F721B0D2AA9002C8BF8 /* Main.storyboard */,
+				1DF99FEC1B210764002C8BF8 /* FoodDetailsView.h */,
+				1DF99FED1B210764002C8BF8 /* FoodDetailsView.m */,
+				1DF99FE71B2102E8002C8BF8 /* FoodDetailsView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -239,6 +250,8 @@
 				1DF99FBB1B17978A002C8BF8 /* RecipesViewController.m */,
 				1DF99FBD1B179795002C8BF8 /* SettingsViewController.h */,
 				1DF99FBE1B179795002C8BF8 /* SettingsViewController.m */,
+				1DF99FE91B21038F002C8BF8 /* FoodDetailsViewController.h */,
+				1DF99FEA1B21038F002C8BF8 /* FoodDetailsViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -326,6 +339,7 @@
 				1DF99F8F1B0D2AC2002C8BF8 /* .gitignore in Resources */,
 				1DF99F741B0D2AA9002C8BF8 /* Main.storyboard in Resources */,
 				1DF99F791B0D2AA9002C8BF8 /* LaunchScreen.xib in Resources */,
+				1DF99FE81B2102E8002C8BF8 /* FoodDetailsView.xib in Resources */,
 				1DF99F761B0D2AA9002C8BF8 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -352,6 +366,7 @@
 				1DF99F6B1B0D2AA9002C8BF8 /* AppDelegate.m in Sources */,
 				1DF99FB91B17977E002C8BF8 /* SearchViewController.m in Sources */,
 				1DF99F9F1B0D3DEF002C8BF8 /* Food.m in Sources */,
+				1DF99FEB1B21038F002C8BF8 /* FoodDetailsViewController.m in Sources */,
 				1DF99F681B0D2AA9002C8BF8 /* main.m in Sources */,
 				1DF99F951B0D2B33002C8BF8 /* ApiKeys.m in Sources */,
 				1DF99FA51B0D48CF002C8BF8 /* UsdaClient.m in Sources */,
@@ -364,6 +379,7 @@
 				1DF99FBF1B179795002C8BF8 /* SettingsViewController.m in Sources */,
 				1DF99FA21B0D3EA2002C8BF8 /* Nutrient.m in Sources */,
 				1DF99F6E1B0D2AA9002C8BF8 /* RecipeNutrients.xcdatamodeld in Sources */,
+				1DF99FEE1B210764002C8BF8 /* FoodDetailsView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
