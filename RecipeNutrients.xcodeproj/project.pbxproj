@@ -45,6 +45,8 @@
 		1DF99FEE1B210764002C8BF8 /* FoodDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF99FED1B210764002C8BF8 /* FoodDetailsView.m */; };
 		1DF99FF01B21B2CC002C8BF8 /* SearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DF99FEF1B21B2CC002C8BF8 /* SearchView.xib */; };
 		1DF99FF31B21B344002C8BF8 /* SearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF99FF21B21B344002C8BF8 /* SearchView.m */; };
+		1DF99FF61B225423002C8BF8 /* SearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DF99FF51B225423002C8BF8 /* SearchResultCell.xib */; };
+		1DF99FF91B2254A6002C8BF8 /* SearchResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF99FF81B2254A6002C8BF8 /* SearchResultCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +118,9 @@
 		1DF99FEF1B21B2CC002C8BF8 /* SearchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchView.xib; sourceTree = "<group>"; };
 		1DF99FF11B21B344002C8BF8 /* SearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchView.h; sourceTree = "<group>"; };
 		1DF99FF21B21B344002C8BF8 /* SearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchView.m; sourceTree = "<group>"; };
+		1DF99FF51B225423002C8BF8 /* SearchResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultCell.xib; sourceTree = "<group>"; };
+		1DF99FF71B2254A6002C8BF8 /* SearchResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultCell.h; sourceTree = "<group>"; };
+		1DF99FF81B2254A6002C8BF8 /* SearchResultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,6 +236,7 @@
 		1DF99F911B0D2AF5002C8BF8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1DF99FF41B2253D6002C8BF8 /* Cells */,
 				1DF99F771B0D2AA9002C8BF8 /* LaunchScreen.xib */,
 				1DF99F721B0D2AA9002C8BF8 /* Main.storyboard */,
 				1DF99FE71B2102E8002C8BF8 /* FoodDetailsView.xib */,
@@ -262,6 +268,16 @@
 				1DF99FEA1B21038F002C8BF8 /* FoodDetailsViewController.m */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		1DF99FF41B2253D6002C8BF8 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				1DF99FF51B225423002C8BF8 /* SearchResultCell.xib */,
+				1DF99FF71B2254A6002C8BF8 /* SearchResultCell.h */,
+				1DF99FF81B2254A6002C8BF8 /* SearchResultCell.m */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -350,6 +366,7 @@
 				1DF99F791B0D2AA9002C8BF8 /* LaunchScreen.xib in Resources */,
 				1DF99FE81B2102E8002C8BF8 /* FoodDetailsView.xib in Resources */,
 				1DF99F761B0D2AA9002C8BF8 /* Images.xcassets in Resources */,
+				1DF99FF61B225423002C8BF8 /* SearchResultCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,6 +394,7 @@
 				1DF99FB91B17977E002C8BF8 /* SearchViewController.m in Sources */,
 				1DF99F9F1B0D3DEF002C8BF8 /* Food.m in Sources */,
 				1DF99FEB1B21038F002C8BF8 /* FoodDetailsViewController.m in Sources */,
+				1DF99FF91B2254A6002C8BF8 /* SearchResultCell.m in Sources */,
 				1DF99F681B0D2AA9002C8BF8 /* main.m in Sources */,
 				1DF99F951B0D2B33002C8BF8 /* ApiKeys.m in Sources */,
 				1DF99FA51B0D48CF002C8BF8 /* UsdaClient.m in Sources */,

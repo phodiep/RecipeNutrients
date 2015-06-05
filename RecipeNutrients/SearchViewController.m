@@ -10,7 +10,9 @@
 #import "UsdaClient.h"
 #import "SearchResult.h"
 #import "FoodDetailsViewController.h"
+
 #import "SearchView.h"
+#import "SearchResultCell.h"
 
 @interface SearchViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
@@ -40,6 +42,8 @@
     self.searchView.tableView.delegate = self;
     self.searchView.searchBar.delegate = self;
     
+    UINib *nib = [UINib nibWithNibName:@"SearchResultCell" bundle:nil];
+    [self.searchView.tableView registerNib:nib forCellReuseIdentifier:@"SEARCH_RESULTS_CELL"];
 }
 
 #pragma mark - UITableView DataSource
@@ -58,10 +62,12 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"SEARCH_RESULTS_CELL"];
+    SearchResultCell *cell = (SearchResultCell*)[self.searchView.tableView dequeueReusableCellWithIdentifier:@"SEARCH_RESULTS_CELL" forIndexPath:indexPath];
+    
     NSString *section = self.searchResultsTypes[indexPath.section];
     SearchResult *item = (SearchResult*) self.searchResultsSortedByType[section][indexPath.row];
-    cell.textLabel.text = item.getName;
+    
+    cell.label.text = item.getName;
     return cell;
 }
 
