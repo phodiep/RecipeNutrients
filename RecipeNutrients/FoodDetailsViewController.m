@@ -23,6 +23,8 @@
     self.detailView = [[NSBundle mainBundle] loadNibNamed:@"FoodDetailsView" owner:self options:nil][0];
     self.detailView.frame = [UIScreen mainScreen].applicationFrame;
 
+    [self.detailView.backButton addTarget:self action:@selector(backButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+    
     self.view = self.detailView;
     
 }
@@ -34,6 +36,7 @@
     
     self.detailView.tableView.dataSource = self;
     self.detailView.tableView.delegate = self;
+
 }
 
 
@@ -55,5 +58,10 @@
 
 #pragma mark - UITableViewDelegate
 
+
+#pragma mark - Button actions
+-(void)backButtonPressed {
+    [self dismissViewControllerAnimated:true completion:nil];
+}
 
 @end

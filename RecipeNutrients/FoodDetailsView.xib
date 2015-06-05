@@ -11,7 +11,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ihy-1t-NtW">
-                    <rect key="frame" x="8" y="20" width="584" height="21"/>
+                    <rect key="frame" x="74" y="20" width="452" height="21"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
@@ -20,20 +20,32 @@
                     <rect key="frame" x="8" y="49" width="584" height="543"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GOl-L6-ytA">
+                    <rect key="frame" x="8" y="18" width="66" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="66" id="b7R-8b-HDq"/>
+                    </constraints>
+                    <state key="normal" title="&lt; Back">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="ihy-1t-NtW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="LtG-Id-sJn"/>
+                <constraint firstItem="GOl-L6-ytA" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="1RF-Mr-Qyz"/>
+                <constraint firstItem="GOl-L6-ytA" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="18" id="9Cq-XS-b7g"/>
+                <constraint firstItem="ihy-1t-NtW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="74" id="LtG-Id-sJn"/>
                 <constraint firstAttribute="bottom" secondItem="lIn-9o-SjF" secondAttribute="bottom" constant="8" id="Skw-L3-CfS"/>
                 <constraint firstItem="ihy-1t-NtW" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="U2s-8i-gtu"/>
                 <constraint firstItem="lIn-9o-SjF" firstAttribute="top" secondItem="ihy-1t-NtW" secondAttribute="bottom" constant="8" id="ZQh-eC-2o3"/>
-                <constraint firstAttribute="trailing" secondItem="ihy-1t-NtW" secondAttribute="trailing" constant="8" id="aOq-m1-2vT"/>
+                <constraint firstAttribute="trailing" secondItem="ihy-1t-NtW" secondAttribute="trailing" constant="74" id="aOq-m1-2vT"/>
                 <constraint firstItem="lIn-9o-SjF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="cAM-sZ-Doh"/>
                 <constraint firstAttribute="centerX" secondItem="ihy-1t-NtW" secondAttribute="centerX" id="m6q-cE-WZo"/>
                 <constraint firstAttribute="trailing" secondItem="lIn-9o-SjF" secondAttribute="trailing" constant="8" id="p7B-jw-yPf"/>
             </constraints>
             <connections>
                 <outlet property="TitleLabel" destination="ihy-1t-NtW" id="QnG-jR-ref"/>
+                <outlet property="backButton" destination="GOl-L6-ytA" id="9u2-RL-MnT"/>
                 <outlet property="tableView" destination="lIn-9o-SjF" id="nLG-dd-acJ"/>
             </connections>
         </view>

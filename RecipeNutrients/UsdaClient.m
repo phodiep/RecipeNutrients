@@ -19,6 +19,8 @@
 @property (strong, nonatomic) NSString *defaultMaxResult;
 @property (strong, nonatomic) NSString *defaultOffset;
 
+@property (strong, nonatomic) NSMutableDictionary *foods;
+
 @end
 
 @implementation UsdaClient
@@ -73,10 +75,21 @@
     return _defaultOffset;
 }
 
+-(NSMutableDictionary *)foods {
+    if (_foods == nil) {
+        _foods = [[NSMutableDictionary alloc] init];
+    }
+    return _foods;
+}
+
 #pragma mark - Fetch Food Report
 -(Food*)fetchFoodReport:(NSString*)ndbno {
     if (ndbno == nil) {
         return nil;
+    }
+    
+    if (self.foods[ndbno] != nil) {
+        return self.foods[ndbno];
     }
     
     NSString *endpoint = self.httpEndPointFoodReports;
@@ -97,6 +110,8 @@
                                             food = [[Food alloc] initWithJson:(NSDictionary*)report[@"food"]];
                                         }
                                     }];
+    self.foods[ndbno] = food;
+    
     return food;
 }
 

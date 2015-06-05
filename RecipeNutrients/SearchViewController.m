@@ -67,11 +67,15 @@
 
 #pragma mark - UITableView Delegate
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    SearchResult *selectedItem = (SearchResult*)self.searchResults[indexPath.row];
+    NSString *section = self.searchResultsTypes[indexPath.section];
+    SearchResult *selectedItem = (SearchResult*) self.searchResultsSortedByType[section][indexPath.row];
+    
     Food *food = [[UsdaClient sharedService] fetchFoodReport:selectedItem.getNdbno];
     
     FoodDetailsViewController *foodVC = [[FoodDetailsViewController alloc] init];
     foodVC.food = food;
+    
+    [self.searchView.tableView deselectRowAtIndexPath:indexPath animated:true];
     
     [self presentViewController:foodVC animated:true completion:nil];
     
