@@ -18,12 +18,14 @@
 @property (strong, nonatomic) NSString *searchQuery;
 @property (strong, nonatomic) NSArray *searchResults;
 
+@property (strong, nonatomic) NSMutableDictionary *searchResultsSortedByType;
+@property (strong, nonatomic) NSMutableArray *searchResultsTypes;
+
 @end
 
 @implementation SearchViewController
 
 -(void)loadView {
-    
     self.searchView = [[NSBundle mainBundle] loadNibNamed:@"SearchView" owner:self options:nil][0];
     self.searchView.frame = [UIScreen mainScreen].applicationFrame;
     self.view = self.searchView;
@@ -42,15 +44,24 @@
 
 #pragma mark - UITableView DataSource
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.searchResults count];
+    NSString *sectionName = self.searchResultsTypes[section];
+    
+    return [self.searchResultsSortedByType[sectionName] count];
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return [self.searchResultsTypes count];
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return self.searchResultsTypes[section];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"SEARCH_RESULTS_CELL"];
-    SearchResult *item = (SearchResult*) self.searchResults[indexPath.row];
+    NSString *section = self.searchResultsTypes[indexPath.section];
+    SearchResult *item = (SearchResult*) self.searchResultsSortedByType[section][indexPath.row];
     cell.textLabel.text = item.getName;
-    
     return cell;
 }
 
@@ -93,6 +104,7 @@
     [searchBar resignFirstResponder];
     self.searchQuery = [self urlEncode:searchBar.text];
     self.searchResults = [self searchForFood:self.searchQuery];
+    [self sortSearchResultsByType];
     [self.searchView.tableView reloadData];
 }
 
@@ -108,6 +120,24 @@
 
 -(NSArray*)searchForFood:(NSString*)searchQuery {
     return [self searchForFood:searchQuery withOffset:0];
+}
+
+-(void)sortSearchResultsByType {
+    self.searchResultsTypes = [[NSMutableArray alloc] init];
+    self.searchResultsSortedByType = [[NSMutableDictionary alloc] init];
+    
+    for (SearchResult *food in self.searchResults) {
+        NSString *foodgroup = food.getFoodGroup;
+        if (self.searchResultsSortedByType[foodgroup] == nil) {
+            self.searchResultsSortedByType[foodgroup] = [[NSMutableArray alloc] initWithArray:@[food]];
+            [self.searchResultsTypes addObject:foodgroup];
+        } else {
+            [self.searchResultsSortedByType[foodgroup] addObject:food];
+        }
+    }
+    
+    [self.searchResultsTypes sortUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+
 }
 
 -(NSString*)urlEncode:(NSString*)victim {

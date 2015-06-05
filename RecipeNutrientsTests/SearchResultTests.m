@@ -39,7 +39,7 @@
 - (void)testSearchResult {
     XCTAssert([self.searchResult.getName isEqualToString:@"Butter, whipped, with salt"]);
     XCTAssert([self.searchResult.getNdbno isEqualToString:@"01002"]);
-    XCTAssert([self.searchResult.getGroup isEqualToString:@"Dairy and Egg Products"]);
+    XCTAssert([self.searchResult.getFoodGroup isEqualToString:@"Dairy and Egg Products"]);
 }
 
 - (void)testSearchResult_nilJson {

@@ -233,9 +233,9 @@
 			children = (
 				1DF99F771B0D2AA9002C8BF8 /* LaunchScreen.xib */,
 				1DF99F721B0D2AA9002C8BF8 /* Main.storyboard */,
+				1DF99FE71B2102E8002C8BF8 /* FoodDetailsView.xib */,
 				1DF99FEC1B210764002C8BF8 /* FoodDetailsView.h */,
 				1DF99FED1B210764002C8BF8 /* FoodDetailsView.m */,
-				1DF99FE71B2102E8002C8BF8 /* FoodDetailsView.xib */,
 				1DF99FEF1B21B2CC002C8BF8 /* SearchView.xib */,
 				1DF99FF11B21B344002C8BF8 /* SearchView.h */,
 				1DF99FF21B21B344002C8BF8 /* SearchView.m */,

@@ -15,6 +15,6 @@
 
 -(NSString*)getName;
 -(NSString*)getNdbno;
--(NSString*)getGroup;
+-(NSString*)getFoodGroup;
 
 @end

@@ -78,7 +78,7 @@
     return self.ndbno;
 }
 
--(NSString*)getGroup {
+-(NSString*)getFoodGroup {
     return self.foodGroup;
 }
 
