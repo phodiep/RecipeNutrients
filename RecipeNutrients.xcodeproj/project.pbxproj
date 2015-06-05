@@ -43,6 +43,8 @@
 		1DF99FE81B2102E8002C8BF8 /* FoodDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DF99FE71B2102E8002C8BF8 /* FoodDetailsView.xib */; };
 		1DF99FEB1B21038F002C8BF8 /* FoodDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF99FEA1B21038F002C8BF8 /* FoodDetailsViewController.m */; };
 		1DF99FEE1B210764002C8BF8 /* FoodDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF99FED1B210764002C8BF8 /* FoodDetailsView.m */; };
+		1DF99FF01B21B2CC002C8BF8 /* SearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DF99FEF1B21B2CC002C8BF8 /* SearchView.xib */; };
+		1DF99FF31B21B344002C8BF8 /* SearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF99FF21B21B344002C8BF8 /* SearchView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +113,9 @@
 		1DF99FEA1B21038F002C8BF8 /* FoodDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodDetailsViewController.m; sourceTree = "<group>"; };
 		1DF99FEC1B210764002C8BF8 /* FoodDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodDetailsView.h; sourceTree = "<group>"; };
 		1DF99FED1B210764002C8BF8 /* FoodDetailsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodDetailsView.m; sourceTree = "<group>"; };
+		1DF99FEF1B21B2CC002C8BF8 /* SearchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchView.xib; sourceTree = "<group>"; };
+		1DF99FF11B21B344002C8BF8 /* SearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchView.h; sourceTree = "<group>"; };
+		1DF99FF21B21B344002C8BF8 /* SearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,6 +236,9 @@
 				1DF99FEC1B210764002C8BF8 /* FoodDetailsView.h */,
 				1DF99FED1B210764002C8BF8 /* FoodDetailsView.m */,
 				1DF99FE71B2102E8002C8BF8 /* FoodDetailsView.xib */,
+				1DF99FEF1B21B2CC002C8BF8 /* SearchView.xib */,
+				1DF99FF11B21B344002C8BF8 /* SearchView.h */,
+				1DF99FF21B21B344002C8BF8 /* SearchView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -338,6 +346,7 @@
 			files = (
 				1DF99F8F1B0D2AC2002C8BF8 /* .gitignore in Resources */,
 				1DF99F741B0D2AA9002C8BF8 /* Main.storyboard in Resources */,
+				1DF99FF01B21B2CC002C8BF8 /* SearchView.xib in Resources */,
 				1DF99F791B0D2AA9002C8BF8 /* LaunchScreen.xib in Resources */,
 				1DF99FE81B2102E8002C8BF8 /* FoodDetailsView.xib in Resources */,
 				1DF99F761B0D2AA9002C8BF8 /* Images.xcassets in Resources */,
@@ -363,6 +372,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DF99FF31B21B344002C8BF8 /* SearchView.m in Sources */,
 				1DF99F6B1B0D2AA9002C8BF8 /* AppDelegate.m in Sources */,
 				1DF99FB91B17977E002C8BF8 /* SearchViewController.m in Sources */,
 				1DF99F9F1B0D3DEF002C8BF8 /* Food.m in Sources */,

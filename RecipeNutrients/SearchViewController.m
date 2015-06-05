@@ -10,16 +10,12 @@
 #import "UsdaClient.h"
 #import "SearchResult.h"
 #import "FoodDetailsViewController.h"
+#import "SearchView.h"
 
 @interface SearchViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
-@property (strong, nonatomic) UIView *rootView;
-@property (strong, nonatomic) NSMutableDictionary *views;
-
-@property (strong, nonatomic) UITableView *tableView;
-@property (strong, nonatomic) UISearchBar *searchBar;
+@property (strong, nonatomic) SearchView *searchView;
 @property (strong, nonatomic) NSString *searchQuery;
-
 @property (strong, nonatomic) NSArray *searchResults;
 
 @end
@@ -27,42 +23,21 @@
 @implementation SearchViewController
 
 -(void)loadView {
-    self.rootView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].applicationFrame];
-    self.views = [[NSMutableDictionary alloc] init];
-
-    self.tableView = [[UITableView alloc] init];
-    [self setupForAutoLayout:self.tableView addToView:self.rootView viewsString:@"tableView"];
     
-    self.searchBar = [[UISearchBar alloc] init];
-    [self setupForAutoLayout:self.searchBar addToView:self.rootView viewsString:@"searchBar"];
+    self.searchView = [[NSBundle mainBundle] loadNibNamed:@"SearchView" owner:self options:nil][0];
+    self.searchView.frame = [UIScreen mainScreen].applicationFrame;
+    self.view = self.searchView;
     
-    [self applyAutolayout];
-    
-    self.view = self.rootView;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    self.rootView.backgroundColor = [UIColor whiteColor];
     
-    self.tableView.dataSource = self;
-    self.tableView.delegate = self;
-    self.searchBar.delegate = self;
+    self.searchView.titleLabel.text = @"Search Results";
+    self.searchView.tableView.dataSource = self;
+    self.searchView.tableView.delegate = self;
+    self.searchView.searchBar.delegate = self;
     
-    self.searchResults = [[UsdaClient sharedService] searchForFood:@"coconut%20water" foodGroup:@"" maxResults:@"5" offsetResults:@"0" getAllResults:true];
-}
-
--(void)applyAutolayout {
-    [self.rootView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[tableView]|" options:0 metrics:nil views:self.views]];
-    [self.rootView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[searchBar]|" options:0 metrics:nil views:self.views]];
-    [self.rootView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-20-[searchBar(44)][tableView]|" options:0 metrics:nil views:self.views]];
-}
-
-- (void)setupForAutoLayout:(UIView*)object addToView:(UIView*)rootView viewsString:(NSString*)viewsString {
-    [object setTranslatesAutoresizingMaskIntoConstraints:false];
-    [rootView addSubview:object];
-    [self.views setObject:object forKey:viewsString];
 }
 
 #pragma mark - UITableView DataSource
@@ -118,7 +93,7 @@
     [searchBar resignFirstResponder];
     self.searchQuery = [self urlEncode:searchBar.text];
     self.searchResults = [self searchForFood:self.searchQuery];
-    [self.tableView reloadData];
+    [self.searchView.tableView reloadData];
 }
 
 #pragma mark - misc
