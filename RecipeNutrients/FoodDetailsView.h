@@ -14,5 +14,6 @@
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UIButton *backButton;
 @property (strong, nonatomic) IBOutlet UIButton *measurementButton;
+@property (strong, nonatomic) IBOutlet UIPickerView *measurementPicker;
 
 @end

@@ -17,7 +17,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="lIn-9o-SjF">
-                    <rect key="frame" x="8" y="89" width="584" height="503"/>
+                    <rect key="frame" x="8" y="87" width="584" height="505"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GOl-L6-ytA">
@@ -25,28 +25,37 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="csX-fo-CAU"/>
                     </constraints>
-                    <state key="normal" title="Back" image="left216">
+                    <state key="normal" image="left216">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WE2-lk-QX7">
-                    <rect key="frame" x="254" y="49" width="93" height="32"/>
+                    <rect key="frame" x="254" y="49" width="93" height="30"/>
                     <fontDescription key="fontDescription" type="italicSystem" pointSize="15"/>
                     <state key="normal" title="Measurement">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
+                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hF2-AA-7wX">
+                    <rect key="frame" x="20" y="444" width="560" height="162"/>
+                    <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="150" id="DjS-oY-OEz"/>
+                    </constraints>
+                </pickerView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="lIn-9o-SjF" firstAttribute="top" secondItem="GOl-L6-ytA" secondAttribute="bottom" constant="29" id="Kh6-iI-fwY"/>
                 <constraint firstItem="ihy-1t-NtW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="74" id="LtG-Id-sJn"/>
-                <constraint firstAttribute="bottom" secondItem="lIn-9o-SjF" secondAttribute="bottom" constant="8" id="Skw-L3-CfS"/>
                 <constraint firstItem="ihy-1t-NtW" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="U2s-8i-gtu"/>
+                <constraint firstAttribute="trailing" secondItem="hF2-AA-7wX" secondAttribute="trailing" constant="20" id="WGA-Fz-U09"/>
+                <constraint firstAttribute="bottom" secondItem="hF2-AA-7wX" secondAttribute="bottom" id="Ya0-a9-AHN"/>
+                <constraint firstAttribute="bottom" secondItem="lIn-9o-SjF" secondAttribute="bottom" constant="8" id="aGU-Uu-V3u"/>
                 <constraint firstAttribute="trailing" secondItem="ihy-1t-NtW" secondAttribute="trailing" constant="74" id="aOq-m1-2vT"/>
                 <constraint firstItem="lIn-9o-SjF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="cAM-sZ-Doh"/>
                 <constraint firstItem="GOl-L6-ytA" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="eAG-1J-xzD"/>
                 <constraint firstItem="ihy-1t-NtW" firstAttribute="leading" secondItem="GOl-L6-ytA" secondAttribute="trailing" constant="26" id="fgr-Ir-S0c"/>
+                <constraint firstItem="hF2-AA-7wX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="g86-iw-9pd"/>
                 <constraint firstAttribute="centerX" secondItem="ihy-1t-NtW" secondAttribute="centerX" id="m6q-cE-WZo"/>
                 <constraint firstItem="WE2-lk-QX7" firstAttribute="top" secondItem="ihy-1t-NtW" secondAttribute="bottom" constant="8" id="nPO-7U-Tbn"/>
                 <constraint firstAttribute="trailing" secondItem="lIn-9o-SjF" secondAttribute="trailing" constant="8" id="p7B-jw-yPf"/>
@@ -58,6 +67,7 @@
                 <outlet property="TitleLabel" destination="ihy-1t-NtW" id="QnG-jR-ref"/>
                 <outlet property="backButton" destination="GOl-L6-ytA" id="9u2-RL-MnT"/>
                 <outlet property="measurementButton" destination="WE2-lk-QX7" id="jxl-la-vuw"/>
+                <outlet property="measurementPicker" destination="hF2-AA-7wX" id="0I7-Ow-pK4"/>
                 <outlet property="tableView" destination="lIn-9o-SjF" id="nLG-dd-acJ"/>
             </connections>
         </view>
