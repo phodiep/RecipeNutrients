@@ -47,6 +47,10 @@
 }
 
 #pragma mark - UITableView DataSource
+-(CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 45;
+}
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSString *sectionName = self.searchResultsTypes[section];
     
