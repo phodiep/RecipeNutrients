@@ -13,5 +13,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *TitleLabel;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UIButton *backButton;
+@property (strong, nonatomic) IBOutlet UIButton *measurementButton;
 
 @end

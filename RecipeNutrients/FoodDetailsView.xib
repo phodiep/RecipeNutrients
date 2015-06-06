@@ -17,7 +17,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="lIn-9o-SjF">
-                    <rect key="frame" x="8" y="49" width="584" height="543"/>
+                    <rect key="frame" x="8" y="87" width="584" height="505"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GOl-L6-ytA">
@@ -29,6 +29,13 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WE2-lk-QX7">
+                    <rect key="frame" x="254" y="49" width="93" height="30"/>
+                    <fontDescription key="fontDescription" type="italicSystem" pointSize="15"/>
+                    <state key="normal" title="Measurement">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -37,15 +44,18 @@
                 <constraint firstItem="ihy-1t-NtW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="74" id="LtG-Id-sJn"/>
                 <constraint firstAttribute="bottom" secondItem="lIn-9o-SjF" secondAttribute="bottom" constant="8" id="Skw-L3-CfS"/>
                 <constraint firstItem="ihy-1t-NtW" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="U2s-8i-gtu"/>
-                <constraint firstItem="lIn-9o-SjF" firstAttribute="top" secondItem="ihy-1t-NtW" secondAttribute="bottom" constant="8" id="ZQh-eC-2o3"/>
                 <constraint firstAttribute="trailing" secondItem="ihy-1t-NtW" secondAttribute="trailing" constant="74" id="aOq-m1-2vT"/>
                 <constraint firstItem="lIn-9o-SjF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="cAM-sZ-Doh"/>
                 <constraint firstAttribute="centerX" secondItem="ihy-1t-NtW" secondAttribute="centerX" id="m6q-cE-WZo"/>
+                <constraint firstItem="WE2-lk-QX7" firstAttribute="top" secondItem="ihy-1t-NtW" secondAttribute="bottom" constant="8" id="nPO-7U-Tbn"/>
                 <constraint firstAttribute="trailing" secondItem="lIn-9o-SjF" secondAttribute="trailing" constant="8" id="p7B-jw-yPf"/>
+                <constraint firstItem="ihy-1t-NtW" firstAttribute="centerX" secondItem="WE2-lk-QX7" secondAttribute="centerX" id="pRl-54-kjH"/>
+                <constraint firstItem="lIn-9o-SjF" firstAttribute="top" secondItem="WE2-lk-QX7" secondAttribute="bottom" constant="8" id="w8f-G8-Zw4"/>
             </constraints>
             <connections>
                 <outlet property="TitleLabel" destination="ihy-1t-NtW" id="QnG-jR-ref"/>
                 <outlet property="backButton" destination="GOl-L6-ytA" id="9u2-RL-MnT"/>
+                <outlet property="measurementButton" destination="WE2-lk-QX7" id="jxl-la-vuw"/>
                 <outlet property="tableView" destination="lIn-9o-SjF" id="nLG-dd-acJ"/>
             </connections>
         </view>

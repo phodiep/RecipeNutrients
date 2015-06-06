@@ -47,6 +47,8 @@
 		1DF99FF31B21B344002C8BF8 /* SearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF99FF21B21B344002C8BF8 /* SearchView.m */; };
 		1DF99FF61B225423002C8BF8 /* SearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DF99FF51B225423002C8BF8 /* SearchResultCell.xib */; };
 		1DF99FF91B2254A6002C8BF8 /* SearchResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF99FF81B2254A6002C8BF8 /* SearchResultCell.m */; };
+		1DF99FFD1B225958002C8BF8 /* NutritionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DF99FFC1B225958002C8BF8 /* NutritionCell.xib */; };
+		1DF9A0001B22598D002C8BF8 /* NutritionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF99FFF1B22598D002C8BF8 /* NutritionCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +123,9 @@
 		1DF99FF51B225423002C8BF8 /* SearchResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultCell.xib; sourceTree = "<group>"; };
 		1DF99FF71B2254A6002C8BF8 /* SearchResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultCell.h; sourceTree = "<group>"; };
 		1DF99FF81B2254A6002C8BF8 /* SearchResultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultCell.m; sourceTree = "<group>"; };
+		1DF99FFC1B225958002C8BF8 /* NutritionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NutritionCell.xib; sourceTree = "<group>"; };
+		1DF99FFE1B22598D002C8BF8 /* NutritionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NutritionCell.h; sourceTree = "<group>"; };
+		1DF99FFF1B22598D002C8BF8 /* NutritionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NutritionCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,6 +281,9 @@
 				1DF99FF51B225423002C8BF8 /* SearchResultCell.xib */,
 				1DF99FF71B2254A6002C8BF8 /* SearchResultCell.h */,
 				1DF99FF81B2254A6002C8BF8 /* SearchResultCell.m */,
+				1DF99FFC1B225958002C8BF8 /* NutritionCell.xib */,
+				1DF99FFE1B22598D002C8BF8 /* NutritionCell.h */,
+				1DF99FFF1B22598D002C8BF8 /* NutritionCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -366,6 +374,7 @@
 				1DF99F791B0D2AA9002C8BF8 /* LaunchScreen.xib in Resources */,
 				1DF99FE81B2102E8002C8BF8 /* FoodDetailsView.xib in Resources */,
 				1DF99F761B0D2AA9002C8BF8 /* Images.xcassets in Resources */,
+				1DF99FFD1B225958002C8BF8 /* NutritionCell.xib in Resources */,
 				1DF99FF61B225423002C8BF8 /* SearchResultCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -403,6 +412,7 @@
 				1DF99FB01B168773002C8BF8 /* SearchResult.m in Sources */,
 				1DF99F711B0D2AA9002C8BF8 /* ViewController.m in Sources */,
 				1DF99FAA1B14FEC9002C8BF8 /* Measure.m in Sources */,
+				1DF9A0001B22598D002C8BF8 /* NutritionCell.m in Sources */,
 				1DF99F9A1B0D2F33002C8BF8 /* NetworkController.m in Sources */,
 				1DF99FBF1B179795002C8BF8 /* SettingsViewController.m in Sources */,
 				1DF99FA21B0D3EA2002C8BF8 /* Nutrient.m in Sources */,
