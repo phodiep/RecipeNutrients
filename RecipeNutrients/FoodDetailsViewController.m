@@ -17,6 +17,9 @@
 
 @property (strong, nonatomic) FoodDetailsView *detailView;
 
+@property (strong, nonatomic) NSMutableDictionary *nutrientsSortedByGroups;
+@property (strong, nonatomic) NSMutableArray *nutrientGroups;
+
 @property (strong, nonatomic) NSMutableArray *measurementOptions;
 @property (strong, nonatomic) NSString *selectedMeasurement;
 
@@ -46,6 +49,8 @@
 -(void)viewDidLoad {
     [super viewDidLoad];
     
+    [self sortNutrientsByGroups];
+    
     self.detailView.TitleLabel.text = self.food.getName;
     
     [self getMeasurements];
@@ -54,6 +59,9 @@
     
     self.detailView.measurementPicker.dataSource = self;
     self.detailView.measurementPicker.delegate = self;
+    self.detailView.measurementPicker.layer.borderColor = [UIColor blackColor].CGColor;
+    self.detailView.measurementPicker.layer.borderWidth = 1;
+    
     [self.detailView.measurementPicker selectRow:1 inComponent:0 animated:true];
     
     self.pickerMultiplierWhole = [self.wholeOptions[1] floatValue];
@@ -67,6 +75,7 @@
     [self.detailView.tableView registerNib:nib forCellReuseIdentifier:@"NUTRITION_CELL"];
     
     [self.detailView.measurementButton addTarget:self action:@selector(measurementButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+    [self.detailView.pickerSubviewDoneButton addTarget:self action:@selector(doneButtonPressed) forControlEvents:UIControlEventTouchUpInside];
 }
 
 -(void)getMeasurements {
@@ -87,15 +96,25 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.food.getNutrients count];
+    NSString *sectionName = self.nutrientGroups[section];
+    return [self.nutrientsSortedByGroups[sectionName] count];
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return [self.nutrientGroups count];
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return self.nutrientGroups[section];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     NutritionCell *cell = (NutritionCell*)[self.detailView.tableView dequeueReusableCellWithIdentifier:@"NUTRITION_CELL" forIndexPath:indexPath];
+ 
+    NSString *section = self.nutrientGroups[indexPath.section];
     
-    NSString *name = [self.food.getNutrients allKeys][indexPath.row];
-    Nutrient *nutrient = self.food.getNutrients[name];
+    Nutrient *nutrient = self.nutrientsSortedByGroups[section][indexPath.row];
     
     cell.nutrientLabel.text = nutrient.getName;
 
@@ -185,13 +204,39 @@
 }
 
 -(void)measurementButtonPressed {
-    NSLog(@"%@", self.measurementOptions);
-    
+    [self.detailView showPickerSubView];
+}
+
+-(void)doneButtonPressed {
+    [self.detailView hidePickerSubView];
 }
 
 -(void)updateMultiplierAndReloadTable {
     self.pickerMultiplier = self.pickerMultiplierWhole + self.pickerMultiplierFraction;
     [self.detailView.tableView reloadData];
+}
+
+#pragma mark - misc
+-(void)sortNutrientsByGroups {
+    NSDictionary *foodNutrients = self.food.getNutrients;
+    NSArray *nutrientKeys = [foodNutrients allKeys];
+    
+    self.nutrientGroups = [[NSMutableArray alloc] init];
+    self.nutrientsSortedByGroups = [[NSMutableDictionary alloc] init];
+    
+    for (NSString *key in nutrientKeys) {
+        Nutrient *nutrient = foodNutrients[key];
+        NSString *nutrientGroup = nutrient.getGroup;
+        
+        if (self.nutrientsSortedByGroups[nutrientGroup] == nil) {
+            self.nutrientsSortedByGroups[nutrientGroup] = [[NSMutableArray alloc] initWithArray:@[nutrient]];
+            [self.nutrientGroups addObject:nutrient.getGroup];
+        } else {
+            [self.nutrientsSortedByGroups[nutrientGroup] addObject:nutrient];
+        }
+    }
+    [self.nutrientGroups sortUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+
 }
 
 @end

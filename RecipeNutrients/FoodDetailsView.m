@@ -10,12 +10,18 @@
 
 @implementation FoodDetailsView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+-(void)hidePickerSubView {
+    [UIView animateWithDuration:0.3f animations:^{
+        [self.pickerSubview setCenter:CGPointMake(self.pickerSubview.center.x,
+                                                  self.pickerSubview.center.y + self.pickerSubview.frame.size.height)];
+    }];
 }
-*/
+
+-(void)showPickerSubView {
+    [UIView animateWithDuration:0.3f animations:^{
+        [self.pickerSubview setCenter:CGPointMake(self.pickerSubview.center.x,
+                                                  self.pickerSubview.center.y - self.pickerSubview.frame.size.height)];
+    }];
+}
 
 @end

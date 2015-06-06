@@ -15,5 +15,10 @@
 @property (strong, nonatomic) IBOutlet UIButton *backButton;
 @property (strong, nonatomic) IBOutlet UIButton *measurementButton;
 @property (strong, nonatomic) IBOutlet UIPickerView *measurementPicker;
+@property (strong, nonatomic) IBOutlet UIView *pickerSubview;
+@property (strong, nonatomic) IBOutlet UIButton *pickerSubviewDoneButton;
+
+-(void)hidePickerSubView;
+-(void)showPickerSubView;
 
 @end
