@@ -31,12 +31,11 @@
 @property (nonatomic) float pickerMultiplierWhole;
 @property (nonatomic) float pickerMultiplierFraction;
 
-@property (nonatomic) BOOL pickerVisible;
-
 @end
 
 @implementation FoodDetailsViewController
 
+#pragma mark - UIViewController Lifecycle
 -(void)loadView {
     
     self.detailView = [[NSBundle mainBundle] loadNibNamed:@"FoodDetailsView" owner:self options:nil][0];
@@ -49,17 +48,43 @@
 -(void)viewDidLoad {
     [super viewDidLoad];
     
+    //UI
+    [self registerNibForTableViewCell];
+    [self setupDataSourceAndDelegates];
+    [self setupTitleBarItems];
+
+    //Data
     [self sortNutrientsByGroups];
+    [self setupMeasurementOptions];
     
-    self.detailView.foodLabel.text = self.food.getName;
+    //Set startup defaults
+    [self setMeasurementPickerDefaults];
+    [self updateMultiplierAndReloadTable];
+    [self updateTitleWithMeasurement];
     
-    self.detailView.navigationController.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"left216"] style:UIBarButtonItemStylePlain target:self action:@selector(backButtonPressed)];
-    self.detailView.navigationController.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"measure37"] style:UIBarButtonItemStylePlain target:self action:@selector(measurementButtonPressed)];
-    
-    [self getMeasurements];
-    
+}
+
+#pragma mark - Setup methods
+-(void)setupDataSourceAndDelegates {
     self.detailView.measurementPicker.dataSource = self;
     self.detailView.measurementPicker.delegate = self;
+
+    self.detailView.tableView.dataSource = self;
+    self.detailView.tableView.delegate = self;
+    self.detailView.tableView.allowsSelection = NO;
+}
+
+-(void)registerNibForTableViewCell {
+    UINib *nib = [UINib nibWithNibName:@"NutritionCell" bundle:nil];
+    [self.detailView.tableView registerNib:nib forCellReuseIdentifier:@"NUTRITION_CELL"];
+}
+
+-(void)setupTitleBarItems {
+    self.detailView.titleBar.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"left216"] style:UIBarButtonItemStylePlain target:self action:@selector(backButtonPressed)];
+    self.detailView.titleBar.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"measure37"] style:UIBarButtonItemStylePlain target:self action:@selector(measurementButtonPressed)];
+}
+
+-(void)setMeasurementPickerDefaults {
     self.detailView.measurementPicker.layer.borderColor = [UIColor blackColor].CGColor;
     self.detailView.measurementPicker.layer.borderWidth = 1;
     
@@ -67,21 +92,10 @@
     
     self.pickerMultiplierWhole = [self.wholeOptions[1] floatValue];
     self.pickerMultiplierFraction = [self.fractionOptions[0] floatValue];
-    [self updateMultiplierAndReloadTable];
-    
-    [self updateTitleWithMeasurement];
-    self.pickerVisible = false;
-    
-    self.detailView.tableView.dataSource = self;
-    self.detailView.tableView.delegate = self;
 
-    UINib *nib = [UINib nibWithNibName:@"NutritionCell" bundle:nil];
-    [self.detailView.tableView registerNib:nib forCellReuseIdentifier:@"NUTRITION_CELL"];
-    
-    [self.detailView.pickerSubviewDoneButton addTarget:self action:@selector(doneButtonPressed) forControlEvents:UIControlEventTouchUpInside];
 }
 
--(void)getMeasurements {
+-(void)setupMeasurementOptions {
     NSArray *keys = [self.food.getNutrients allKeys];
     self.measurementOptions = [[NSMutableArray alloc] initWithArray:[self.food.getNutrients[keys[0]] getMeasurementOptions]];
     [self.measurementOptions sortUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
@@ -137,7 +151,6 @@
 
 #pragma mark - UITableViewDelegate
 
-
 #pragma mark - UIPickerViewDataSource
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
     return 3;
@@ -147,13 +160,10 @@
     switch (component) {
         case 0:
             return [self.wholeOptions count];
-//            return 11; //0-10
             break;
         case 1:
             return [self.fractionOptionLabels count];
-            return 8; //0, 1/8, 1/4, 3/8, 1/2, 5/8, 3/4, 7/8
             break;
-            
         case 2:
             return [self.measurementOptions count];
             break;
@@ -196,7 +206,6 @@
                 [self.detailView.measurementPicker selectRow:1 inComponent:0 animated:true];
                 self.pickerMultiplierWhole = [self.wholeOptions[1] floatValue];
             }
-
             self.pickerMultiplierFraction = [self.fractionOptions[row] floatValue];
             break;
         case 2:
@@ -233,21 +242,11 @@
 }
 
 -(void)measurementButtonPressed {
-    if (!self.pickerVisible) {
-        [self.detailView showPickerSubView];
-    }
-}
-
--(void)doneButtonPressed {
-    if (self.pickerVisible) {
-        [self.detailView hidePickerSubView];
-    }
+    [self.detailView showPickerSubView];
 }
 
 -(void)cancelPickerPressed {
-    if (self.pickerVisible) {
-        [self.detailView hidePickerSubView];
-    }
+    [self.detailView hidePickerSubView];
 }
 
 -(void)updateMultiplierAndReloadTable {
@@ -295,7 +294,7 @@
     
     [currentMeasurement appendString:unitString];
     
-    self.detailView.navigationController.title = currentMeasurement;
+    self.detailView.titleBar.title = currentMeasurement;
 }
 
 @end

@@ -58,7 +58,7 @@
             <connections>
                 <outlet property="searchBar" destination="7Wt-UF-XFY" id="r6l-VG-9kW"/>
                 <outlet property="tableView" destination="B7p-e6-FHQ" id="Ujq-7a-ZCQ"/>
-                <outlet property="title" destination="cRQ-Kg-Ce1" id="nP5-9w-dhk"/>
+                <outlet property="titleBar" destination="cRQ-Kg-Ce1" id="gFT-Dk-u6D"/>
             </connections>
         </view>
     </objects>

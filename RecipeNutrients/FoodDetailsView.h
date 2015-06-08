@@ -11,7 +11,7 @@
 @interface FoodDetailsView : UIView
 
 @property (strong, nonatomic) IBOutlet UINavigationBar *navigationBar;
-@property (strong, nonatomic) IBOutlet UINavigationItem *navigationController;
+@property (strong, nonatomic) IBOutlet UINavigationItem *titleBar;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UILabel *foodLabel;
 @property (strong, nonatomic) IBOutlet UIPickerView *measurementPicker;
@@ -20,5 +20,7 @@
 
 -(void)hidePickerSubView;
 -(void)showPickerSubView;
+
+- (IBAction)pickerDoneButtonPressed:(UIButton *)sender;
 
 @end

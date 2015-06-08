@@ -21,26 +21,29 @@
 
 @implementation RecipesViewController
 
+#pragma mark - UIViewController Lifecycle
 -(void)loadView {
     self.recipesView = [[NSBundle mainBundle] loadNibNamed:@"RecipesListView" owner:self options:nil][0];
     self.recipesView.frame = [UIScreen mainScreen].applicationFrame;
-    
     self.view = self.recipesView;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.recipesView.tableView.dataSource = self;
-    self.recipesView.tableView.delegate = self;
-
-    [self loadRecipes];
+    [self setupDataSourceAndDelegate];
+    [self loadDataSource];
     [self setupTitleBar];
 
-    
 }
 
--(void)loadRecipes {
+#pragma mark - Setup methods
+-(void)setupDataSourceAndDelegate {
+    self.recipesView.tableView.dataSource = self;
+    self.recipesView.tableView.delegate = self;
+}
+
+-(void)loadDataSource {
     self.recipes = [[NSMutableArray alloc] initWithArray:@[@"Banana bread", @"Ice cream cake", @"Flan"]];
 }
 
@@ -55,8 +58,8 @@
 }
 
 -(void)setupTitleBarItemsForTableViewEditMode {
-    self.recipesView.titleBar.leftBarButtonItem = nil;
-    self.recipesView.titleBar.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(editDoneButtonPressed)];
+    self.recipesView.titleBar.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(editDoneButtonPressed)];
+    self.recipesView.titleBar.rightBarButtonItem = nil;
 }
 
 
@@ -84,6 +87,15 @@
     [self.recipes removeObjectAtIndex:(sourceIndexPath.row + 1)];
 }
 
+-(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.recipesView.tableView.editing)
+    {
+        return UITableViewCellEditingStyleDelete;
+    }
+    
+    return UITableViewCellEditingStyleNone;
+}
+
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     return YES;
 }
@@ -109,7 +121,7 @@
 -(void)addRecipeButtonPressed {
     //TODO: prompt user for details with new view
     
-    [self.recipes addObject:@"new recipe :)"];
+    [self.recipes insertObject:@"new recipe! :)" atIndex:0];
     
     [self.recipesView.tableView reloadData];
     

@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface SearchView : UIView
-@property (strong, nonatomic) IBOutlet UINavigationItem *title;
-@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
+
+@property (strong, nonatomic) IBOutlet UINavigationItem *titleBar;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 

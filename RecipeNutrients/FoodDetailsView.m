@@ -11,28 +11,38 @@
 @interface FoodDetailsView ()
 
 @property (strong, nonatomic) UITapGestureRecognizer *tapViewToCloseSubview;
+@property (nonatomic) BOOL subviewVisible;
 
 @end
 
 @implementation FoodDetailsView
 
 -(void)hidePickerSubView {
-    [UIView animateWithDuration:0.3f animations:^{
-        [self.pickerSubview setCenter:CGPointMake(self.pickerSubview.center.x,
-                                                  self.pickerSubview.center.y + self.pickerSubview.frame.size.height)];
-    } completion:^(BOOL finished) {
-        [self removeGestureRecognizer:self.tapViewToCloseSubview];
-    }];
+    if (self.subviewVisible) {
+        [UIView animateWithDuration:0.3f animations:^{
+            [self.pickerSubview setCenter:CGPointMake(self.pickerSubview.center.x,
+                                                      self.pickerSubview.center.y + self.pickerSubview.frame.size.height)];
+        } completion:^(BOOL finished) {
+            [self removeGestureRecognizer:self.tapViewToCloseSubview];
+        }];
+        self.subviewVisible = false;
+    }
 }
 
 -(void)showPickerSubView {
-    [UIView animateWithDuration:0.3f animations:^{
-        [self.pickerSubview setCenter:CGPointMake(self.pickerSubview.center.x,
-                                                  self.pickerSubview.center.y - self.pickerSubview.frame.size.height)];
-    } completion:^(BOOL finished) {
-        [self addGestureRecognizer:self.tapViewToCloseSubview];
+    if (!self.subviewVisible) {
+        [UIView animateWithDuration:0.3f animations:^{
+            [self.pickerSubview setCenter:CGPointMake(self.pickerSubview.center.x,
+                                                      self.pickerSubview.center.y - self.pickerSubview.frame.size.height)];
+        } completion:^(BOOL finished) {
+            [self addGestureRecognizer:self.tapViewToCloseSubview];
+        }];
+        self.subviewVisible = true;
+    }
+}
 
-    }];
+- (IBAction)pickerDoneButtonPressed:(UIButton *)sender {
+    [self hidePickerSubView];
 }
 
 
@@ -42,5 +52,6 @@
     }
     return _tapViewToCloseSubview;
 }
+
 
 @end

@@ -27,23 +27,36 @@
 
 @implementation SearchViewController
 
+#pragma mark - UIViewController Lifecycle
 -(void)loadView {
     self.searchView = [[NSBundle mainBundle] loadNibNamed:@"SearchView" owner:self options:nil][0];
     self.searchView.frame = [UIScreen mainScreen].applicationFrame;
     self.view = self.searchView;
-    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.searchView.title.title = @"Search Results";
+
+    [self registerNibForTableViewCell];
+    [self setupDataSourceAndDelegate];
+    [self setupTitleBar];
+}
+
+#pragma mark - Setup methods
+-(void)setupDataSourceAndDelegate {
     self.searchView.tableView.dataSource = self;
     self.searchView.tableView.delegate = self;
-    self.searchView.searchBar.delegate = self;
     
+    self.searchView.searchBar.delegate = self;
+}
+
+-(void)registerNibForTableViewCell {
     UINib *nib = [UINib nibWithNibName:@"SearchResultCell" bundle:nil];
     [self.searchView.tableView registerNib:nib forCellReuseIdentifier:@"SEARCH_RESULTS_CELL"];
+}
+
+-(void)setupTitleBar {
+    self.searchView.titleBar.title = @"Search Results";
 }
 
 #pragma mark - UITableView DataSource

@@ -35,6 +35,9 @@
                                     </fragment>
                                 </attributedString>
                             </state>
+                            <connections>
+                                <action selector="pickerDoneButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="73L-f7-OLh"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -85,10 +88,10 @@
                 <outlet property="foodLabel" destination="Rth-Vz-ccI" id="hXe-wT-S1r"/>
                 <outlet property="measurementPicker" destination="hF2-AA-7wX" id="0I7-Ow-pK4"/>
                 <outlet property="navigationBar" destination="kL7-in-mFT" id="YBZ-sG-vo4"/>
-                <outlet property="navigationController" destination="Gni-rw-Dxk" id="cC6-6c-Ai8"/>
                 <outlet property="pickerSubview" destination="M1C-9m-22V" id="1wU-cp-Ym2"/>
                 <outlet property="pickerSubviewDoneButton" destination="X5D-a4-4U1" id="mx0-Zo-IMR"/>
                 <outlet property="tableView" destination="lIn-9o-SjF" id="nLG-dd-acJ"/>
+                <outlet property="titleBar" destination="Gni-rw-Dxk" id="dAZ-4B-QoU"/>
             </connections>
         </view>
     </objects>
