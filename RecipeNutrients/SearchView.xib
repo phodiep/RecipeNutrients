@@ -10,14 +10,8 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zib-n1-Ty2">
-                    <rect key="frame" x="8" y="20" width="584" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="B7p-e6-FHQ">
-                    <rect key="frame" x="0.0" y="49" width="600" height="502"/>
+                    <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <searchBar key="tableHeaderView" contentMode="redraw" id="7Wt-UF-XFY">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -36,26 +30,35 @@
                         <tabBarItem systemItem="more" id="m0V-Rq-dxa"/>
                     </items>
                 </tabBar>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zea-VC-7O2">
+                    <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="y7u-Vg-bIX"/>
+                    </constraints>
+                    <color key="barTintColor" red="0.33445956760000001" green="0.72742624980000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <items>
+                        <navigationItem title="Title" id="cRQ-Kg-Ce1"/>
+                    </items>
+                </navigationBar>
             </subviews>
             <color key="backgroundColor" red="0.33445956760000001" green="0.72742624980000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="B7p-e6-FHQ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Hbk-Xy-2oo"/>
                 <constraint firstAttribute="bottom" secondItem="0S8-hd-6uH" secondAttribute="bottom" id="Lmc-AZ-vwo"/>
                 <constraint firstItem="0S8-hd-6uH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="NNs-hX-O8h"/>
-                <constraint firstItem="B7p-e6-FHQ" firstAttribute="top" secondItem="Zib-n1-Ty2" secondAttribute="bottom" constant="8" id="VwE-MP-xoA"/>
-                <constraint firstItem="Zib-n1-Ty2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="YZJ-3N-mip"/>
+                <constraint firstItem="Zea-VC-7O2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="OPx-QT-ClI"/>
+                <constraint firstItem="B7p-e6-FHQ" firstAttribute="top" secondItem="Zea-VC-7O2" secondAttribute="bottom" id="T6g-hv-YzU"/>
+                <constraint firstItem="Zea-VC-7O2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="W50-nI-aQB"/>
                 <constraint firstAttribute="trailing" secondItem="0S8-hd-6uH" secondAttribute="trailing" id="cCc-fO-uEt"/>
                 <constraint firstAttribute="trailing" secondItem="B7p-e6-FHQ" secondAttribute="trailing" id="gEO-Nw-jqR"/>
-                <constraint firstItem="Zib-n1-Ty2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="koK-h2-iaN"/>
                 <constraint firstItem="0S8-hd-6uH" firstAttribute="top" secondItem="B7p-e6-FHQ" secondAttribute="bottom" id="qcv-5r-8N8"/>
-                <constraint firstAttribute="trailing" secondItem="Zib-n1-Ty2" secondAttribute="trailing" constant="8" id="wjh-i5-MV1"/>
+                <constraint firstAttribute="trailing" secondItem="Zea-VC-7O2" secondAttribute="trailing" id="zWb-Mg-TbL"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <connections>
-                <outlet property="TitleLabel" destination="Zib-n1-Ty2" id="pha-6m-711"/>
                 <outlet property="searchBar" destination="7Wt-UF-XFY" id="r6l-VG-9kW"/>
                 <outlet property="tableView" destination="B7p-e6-FHQ" id="Ujq-7a-ZCQ"/>
-                <outlet property="titleLabel" destination="Zib-n1-Ty2" id="Q0j-IW-kWA"/>
+                <outlet property="title" destination="cRQ-Kg-Ce1" id="nP5-9w-dhk"/>
             </connections>
         </view>
     </objects>

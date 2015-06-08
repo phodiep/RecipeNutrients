@@ -37,7 +37,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.searchView.titleLabel.text = @"Search Results";
+    self.searchView.title.title = @"Search Results";
     self.searchView.tableView.dataSource = self;
     self.searchView.tableView.delegate = self;
     self.searchView.searchBar.delegate = self;
@@ -88,7 +88,6 @@
     [self.searchView.tableView deselectRowAtIndexPath:indexPath animated:true];
     
     [self presentViewController:foodVC animated:true completion:nil];
-    
 }
 
 
