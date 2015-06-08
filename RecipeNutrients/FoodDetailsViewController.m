@@ -10,6 +10,7 @@
 #import "FoodDetailsView.h"
 #import "Nutrient.h"
 #import "Measure.h"
+#import "PickerComponent.h"
 
 #import "NutritionCell.h"
 
@@ -30,6 +31,8 @@
 @property (nonatomic) float pickerMultiplier;
 @property (nonatomic) float pickerMultiplierWhole;
 @property (nonatomic) float pickerMultiplierFraction;
+
+@property (strong, nonatomic) NSArray *pickerComponents;
 
 @end
 
@@ -111,6 +114,11 @@
     
     self.fractionOptions = @[@0, @0.125, @0.25, @0.375, @0.5, @0.625, @0.75, @0.875];
     self.fractionOptionLabels = @[@"0", @"1/8", @"1/4", @"3/8", @"1/2", @"5/8", @"3/4", @"7/8"];
+    
+    self.pickerComponents = @[[[PickerComponent alloc] initWithArray:self.wholeOptions],
+                              [[PickerComponent alloc] initWithLabelArray:self.fractionOptionLabels andValueArray:self.fractionOptions],
+                              [[PickerComponent alloc] initWithArray:self.measurementOptions]];
+    
 }
 
 #pragma mark - UITableViewDataSource
@@ -157,41 +165,16 @@
 }
 
 -(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    switch (component) {
-        case 0:
-            return [self.wholeOptions count];
-            break;
-        case 1:
-            return [self.fractionOptionLabels count];
-            break;
-        case 2:
-            return [self.measurementOptions count];
-            break;
-        default:
-            break;
-    }
-    return 1;
+    return [self.pickerComponents[component] numberOfRows];
 }
 
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    switch (component) {
-        case 0:
-            return [NSString stringWithFormat:@"%@", self.wholeOptions[row]];
-            break;
-        case 1:
-            return self.fractionOptionLabels[row];
-            break;
-        case 2:
-            return self.measurementOptions[row];
-            break;
-        default:
-            break;
-    }
-    return @"";
+    return [self.pickerComponents[component] titleForRow:row];
 }
 
 #pragma mark - UIPickerViewDelegate
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+
     switch (component) {
         case 0:
             
