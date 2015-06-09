@@ -83,6 +83,7 @@
 }
 
 -(void)setupTitleBarItems {
+    self.detailView.foodLabel.text = self.food.getName;
     self.detailView.titleBar.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"left216"] style:UIBarButtonItemStylePlain target:self action:@selector(backButtonPressed)];
     self.detailView.titleBar.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"measure37"] style:UIBarButtonItemStylePlain target:self action:@selector(measurementButtonPressed)];
 }
