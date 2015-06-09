@@ -13,6 +13,9 @@
 		1D27EB351B251E9E00274660 /* RecipesListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D27EB341B251E9E00274660 /* RecipesListView.m */; };
 		1D27EB381B25D44C00274660 /* PickerComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D27EB371B25D44C00274660 /* PickerComponent.m */; };
 		1D27EB3A1B26418700274660 /* PickerComponentTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D27EB391B26418700274660 /* PickerComponentTests.m */; };
+		1D27EB3D1B276D7600274660 /* Recipe.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D27EB3C1B276D7600274660 /* Recipe.m */; };
+		1D27EB401B276DFB00274660 /* RecipeIngredient.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D27EB3F1B276DFB00274660 /* RecipeIngredient.m */; };
+		1D27EB421B2776AE00274660 /* RecipeIngredientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D27EB411B2776AE00274660 /* RecipeIngredientTests.m */; };
 		1DF99F681B0D2AA9002C8BF8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF99F671B0D2AA9002C8BF8 /* main.m */; };
 		1DF99F6B1B0D2AA9002C8BF8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF99F6A1B0D2AA9002C8BF8 /* AppDelegate.m */; };
 		1DF99F6E1B0D2AA9002C8BF8 /* RecipeNutrients.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1DF99F6C1B0D2AA9002C8BF8 /* RecipeNutrients.xcdatamodeld */; };
@@ -77,6 +80,11 @@
 		1D27EB361B25D44C00274660 /* PickerComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerComponent.h; sourceTree = "<group>"; };
 		1D27EB371B25D44C00274660 /* PickerComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerComponent.m; sourceTree = "<group>"; };
 		1D27EB391B26418700274660 /* PickerComponentTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerComponentTests.m; sourceTree = "<group>"; };
+		1D27EB3B1B276D7600274660 /* Recipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Recipe.h; sourceTree = "<group>"; };
+		1D27EB3C1B276D7600274660 /* Recipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Recipe.m; sourceTree = "<group>"; };
+		1D27EB3E1B276DFB00274660 /* RecipeIngredient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeIngredient.h; sourceTree = "<group>"; };
+		1D27EB3F1B276DFB00274660 /* RecipeIngredient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeIngredient.m; sourceTree = "<group>"; };
+		1D27EB411B2776AE00274660 /* RecipeIngredientTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeIngredientTests.m; sourceTree = "<group>"; };
 		1DF99F621B0D2AA9002C8BF8 /* RecipeNutrients.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeNutrients.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF99F661B0D2AA9002C8BF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1DF99F671B0D2AA9002C8BF8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -216,6 +224,7 @@
 				1DF99FDF1B20E5E2002C8BF8 /* FoodListItemTests.m */,
 				1DF99FE51B20ED9C002C8BF8 /* SearchResultTests.m */,
 				1D27EB391B26418700274660 /* PickerComponentTests.m */,
+				1D27EB411B2776AE00274660 /* RecipeIngredientTests.m */,
 			);
 			path = RecipeNutrientsTests;
 			sourceTree = "<group>";
@@ -252,6 +261,10 @@
 				1DF99FAF1B168773002C8BF8 /* SearchResult.m */,
 				1D27EB361B25D44C00274660 /* PickerComponent.h */,
 				1D27EB371B25D44C00274660 /* PickerComponent.m */,
+				1D27EB3B1B276D7600274660 /* Recipe.h */,
+				1D27EB3C1B276D7600274660 /* Recipe.m */,
+				1D27EB3E1B276DFB00274660 /* RecipeIngredient.h */,
+				1D27EB3F1B276DFB00274660 /* RecipeIngredient.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -432,6 +445,7 @@
 				1D27EB351B251E9E00274660 /* RecipesListView.m in Sources */,
 				1DF99FEB1B21038F002C8BF8 /* FoodDetailsViewController.m in Sources */,
 				1DF99FF91B2254A6002C8BF8 /* SearchResultCell.m in Sources */,
+				1D27EB401B276DFB00274660 /* RecipeIngredient.m in Sources */,
 				1D27EB301B251E5600274660 /* RecipeView.m in Sources */,
 				1DF99F681B0D2AA9002C8BF8 /* main.m in Sources */,
 				1DF99F951B0D2B33002C8BF8 /* ApiKeys.m in Sources */,
@@ -443,6 +457,7 @@
 				1DF99FAA1B14FEC9002C8BF8 /* Measure.m in Sources */,
 				1DF9A0001B22598D002C8BF8 /* NutritionCell.m in Sources */,
 				1DF99F9A1B0D2F33002C8BF8 /* NetworkController.m in Sources */,
+				1D27EB3D1B276D7600274660 /* Recipe.m in Sources */,
 				1DF99FBF1B179795002C8BF8 /* SettingsViewController.m in Sources */,
 				1DF99FA21B0D3EA2002C8BF8 /* Nutrient.m in Sources */,
 				1DF99F6E1B0D2AA9002C8BF8 /* RecipeNutrients.xcdatamodeld in Sources */,
@@ -464,6 +479,7 @@
 				1D27EB3A1B26418700274660 /* PickerComponentTests.m in Sources */,
 				1DF99FE61B20ED9C002C8BF8 /* SearchResultTests.m in Sources */,
 				1DF99FA71B0E79D0002C8BF8 /* UsdaClientTest.m in Sources */,
+				1D27EB421B2776AE00274660 /* RecipeIngredientTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
