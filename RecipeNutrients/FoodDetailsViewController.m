@@ -91,7 +91,7 @@
     self.detailView.measurementPicker.layer.borderColor = [UIColor blackColor].CGColor;
     self.detailView.measurementPicker.layer.borderWidth = 1;
     
-    [self.detailView.measurementPicker selectRow:1 inComponent:0 animated:true];
+    [self.detailView.measurementPicker selectRow:1 inComponent:0 animated:false];
     
     self.pickerMultiplierWhole = [self.wholeOptions[1] floatValue];
     self.pickerMultiplierFraction = [self.fractionOptions[0] floatValue];
@@ -161,7 +161,7 @@
 
 #pragma mark - UIPickerViewDataSource
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
-    return 3;
+    return [self.pickerComponents count];
 }
 
 -(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
@@ -175,28 +175,17 @@
 #pragma mark - UIPickerViewDelegate
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
 
-    switch (component) {
-        case 0:
-            
-            if (self.pickerMultiplierFraction == 0 && row == 0) {
-                [self.detailView.measurementPicker selectRow:1 inComponent:1 animated:true];
-                self.pickerMultiplierFraction = [self.fractionOptions[1] floatValue];
-            }
-            self.pickerMultiplierWhole = [self.wholeOptions[row] floatValue];
-            break;
-        case 1:
-            if (self.pickerMultiplierWhole == 0 && row == 0) {
-                [self.detailView.measurementPicker selectRow:1 inComponent:0 animated:true];
-                self.pickerMultiplierWhole = [self.wholeOptions[1] floatValue];
-            }
-            self.pickerMultiplierFraction = [self.fractionOptions[row] floatValue];
-            break;
-        case 2:
-            self.selectedMeasurement = self.measurementOptions[row];
-            break;
-        default:
-            break;
+    if ([self.pickerComponents[0] valueIsEqualToZeroForRow: [self selectedRowForComponent:0]] &&
+        [self.pickerComponents[1] valueIsEqualToZeroForRow: [self selectedRowForComponent:1]]) {
+        
+        [self.detailView.measurementPicker selectRow:1 inComponent:component animated:true];
     }
+
+    
+    self.pickerMultiplierWhole = [self.pickerComponents[0] floatValueForRow: [self selectedRowForComponent:0]];
+    self.pickerMultiplierFraction = [self.pickerComponents[1] floatValueForRow: [self selectedRowForComponent:1]];
+    self.selectedMeasurement = [self.pickerComponents[2] titleForRow:[self selectedRowForComponent:2]];
+    
     [self updateMultiplierAndReloadTable];
 }
 
@@ -232,10 +221,15 @@
     [self.detailView hidePickerSubView];
 }
 
+
 -(void)updateMultiplierAndReloadTable {
     self.pickerMultiplier = self.pickerMultiplierWhole + self.pickerMultiplierFraction;
     [self updateTitleWithMeasurement];
     [self.detailView.tableView reloadData];
+}
+
+-(NSInteger)selectedRowForComponent:(NSInteger)component {
+    return [self.detailView.measurementPicker selectedRowInComponent:component];
 }
 
 #pragma mark - misc
