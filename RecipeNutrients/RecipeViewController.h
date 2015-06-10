@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "RecipeView.h"
+#import "Recipe.h"
 
 @interface RecipeViewController : UIViewController
+
+@property (strong, nonatomic) Recipe *recipe;
 
 @end

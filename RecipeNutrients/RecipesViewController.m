@@ -10,13 +10,14 @@
 
 #import "RecipesListView.h"
 #import "RecipeViewController.h"
+#import "Recipe.h"
 
-@interface RecipesViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface RecipesViewController () <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate>
 
 @property (strong, nonatomic) RecipesListView *recipesView;
 @property (strong, nonatomic) NSMutableArray *recipes;
 
-@property (strong, nonatomic) NSDictionary *views;
+@property (strong, nonatomic) UIAlertView *recipeAlertView;
 
 @end
 
@@ -79,6 +80,11 @@
 }
 
 #pragma mark - UITableViewDelegate
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    Recipe *recipe = (Recipe*)self.recipes[indexPath.row];
+    [self openRecipe:recipe];
+}
+
 -(BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
     return YES;
 }
@@ -107,6 +113,38 @@
     }
 }
 
+#pragma mark - UIAlertViewDelegate
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (alertView.tag == 0) {
+        switch (buttonIndex) {
+            case 0:  // cancel
+                break;
+            case 1: // continue
+                if ([[alertView textFieldAtIndex:0].text isEqualToString:@""]) {
+                    [self showErrorInvalidRecipeNameEntered];
+                    break;
+                }
+                [self createNewRecipeAndOpen:[alertView textFieldAtIndex:0].text];
+                break;
+            default:
+                break;
+        }
+    }
+    
+    if (alertView.tag == 1) {
+        if (buttonIndex == 0) {
+            [self.recipeAlertView show];
+        }
+    }
+}
+
+-(void)showErrorInvalidRecipeNameEntered {
+    UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Recipes require a name" message:@"Enter a name to continue" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    errorAlert.tag = 1;
+    
+    [errorAlert show];
+}
+
 #pragma mark - Button Actions
 -(void)editButtonPressed {
     self.recipesView.tableView.editing = true;
@@ -119,14 +157,29 @@
 }
 
 -(void)addRecipeButtonPressed {
-    //TODO: prompt user for details with new view
+    self.recipeAlertView = [[UIAlertView alloc] initWithTitle:@"Create New Recipe" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Continue", nil];
+    self.recipeAlertView.tag = 0;
+    self.recipeAlertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [self.recipeAlertView textFieldAtIndex:0].placeholder = @"Recipe Name (ex. Mom's Famous Banana Bread)";
     
-//    [self.recipes insertObject:@"new recipe! :)" atIndex:0];
-//    
-//    [self.recipesView.tableView reloadData];
-    RecipeViewController *recipeVC = [[RecipeViewController alloc] init];
-    [self presentViewController:recipeVC animated:true completion:nil];
+    [self.recipeAlertView show];
+    
     
 }
 
+-(void)createNewRecipeAndOpen:(NSString*)name {
+    Recipe *recipe = [[Recipe alloc] initWithName:name];
+    [self.recipes insertObject:recipe.getName atIndex:0];
+
+    [self openRecipe:recipe];
+    
+    [self.recipesView.tableView reloadData];
+}
+
+-(void)openRecipe:(Recipe*)recipe {
+    RecipeViewController *recipeVC = [[RecipeViewController alloc] init];
+    recipeVC.recipe = recipe;
+    
+    [self presentViewController:recipeVC animated:true completion:nil];
+}
 @end

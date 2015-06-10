@@ -10,11 +10,12 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jPs-O2-3r0">
+                <navigationBar contentMode="scaleToFill" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jPs-O2-3r0">
                     <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="PU0-L2-QSt"/>
                     </constraints>
+                    <color key="barTintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <items>
                         <navigationItem title="Title" id="f8V-Qg-r0M"/>
                     </items>
@@ -24,7 +25,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="jPs-O2-3r0" secondAttribute="trailing" id="2cw-mG-Z6d"/>
                 <constraint firstItem="jPs-O2-3r0" firstAttribute="top" secondItem="qHc-g7-ta1" secondAttribute="top" constant="20" id="5k1-Eg-ANl"/>

@@ -22,6 +22,8 @@
 		1D27EB4D1B27A15C00274660 /* Fraction.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D27EB4C1B27A15C00274660 /* Fraction.m */; };
 		1D27EB4F1B27A35300274660 /* FractionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D27EB4E1B27A35300274660 /* FractionTests.m */; };
 		1D27EB511B27B83A00274660 /* RecipeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D27EB501B27B83A00274660 /* RecipeTests.m */; };
+		1D27EB581B28DFF300274660 /* ServingsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D27EB571B28DFF300274660 /* ServingsCell.xib */; };
+		1D27EB5B1B28E00900274660 /* ServingsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D27EB5A1B28E00900274660 /* ServingsCell.m */; };
 		1DF99F681B0D2AA9002C8BF8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF99F671B0D2AA9002C8BF8 /* main.m */; };
 		1DF99F6B1B0D2AA9002C8BF8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF99F6A1B0D2AA9002C8BF8 /* AppDelegate.m */; };
 		1DF99F6E1B0D2AA9002C8BF8 /* RecipeNutrients.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1DF99F6C1B0D2AA9002C8BF8 /* RecipeNutrients.xcdatamodeld */; };
@@ -100,6 +102,9 @@
 		1D27EB4C1B27A15C00274660 /* Fraction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fraction.m; sourceTree = "<group>"; };
 		1D27EB4E1B27A35300274660 /* FractionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FractionTests.m; sourceTree = "<group>"; };
 		1D27EB501B27B83A00274660 /* RecipeTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeTests.m; sourceTree = "<group>"; };
+		1D27EB571B28DFF300274660 /* ServingsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServingsCell.xib; sourceTree = "<group>"; };
+		1D27EB591B28E00900274660 /* ServingsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServingsCell.h; sourceTree = "<group>"; };
+		1D27EB5A1B28E00900274660 /* ServingsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServingsCell.m; sourceTree = "<group>"; };
 		1DF99F621B0D2AA9002C8BF8 /* RecipeNutrients.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeNutrients.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF99F661B0D2AA9002C8BF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1DF99F671B0D2AA9002C8BF8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -345,6 +350,9 @@
 				1D27EB461B2786EF00274660 /* IngredientCell.xib */,
 				1D27EB481B27870500274660 /* IngredientCell.h */,
 				1D27EB491B27870500274660 /* IngredientCell.m */,
+				1D27EB571B28DFF300274660 /* ServingsCell.xib */,
+				1D27EB591B28E00900274660 /* ServingsCell.h */,
+				1D27EB5A1B28E00900274660 /* ServingsCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -431,6 +439,7 @@
 			files = (
 				1DF99F8F1B0D2AC2002C8BF8 /* .gitignore in Resources */,
 				1D27EB471B2786EF00274660 /* IngredientCell.xib in Resources */,
+				1D27EB581B28DFF300274660 /* ServingsCell.xib in Resources */,
 				1DF99F741B0D2AA9002C8BF8 /* Main.storyboard in Resources */,
 				1D27EB2D1B251E3300274660 /* RecipeView.xib in Resources */,
 				1DF99FF01B21B2CC002C8BF8 /* SearchView.xib in Resources */,
@@ -478,6 +487,7 @@
 				1DF99FA51B0D48CF002C8BF8 /* UsdaClient.m in Sources */,
 				1DF99FBC1B17978A002C8BF8 /* RecipesViewController.m in Sources */,
 				1D27EB4A1B27870500274660 /* IngredientCell.m in Sources */,
+				1D27EB5B1B28E00900274660 /* ServingsCell.m in Sources */,
 				1DF99FAD1B155684002C8BF8 /* FoodListItem.m in Sources */,
 				1DF99FB01B168773002C8BF8 /* SearchResult.m in Sources */,
 				1DF99F711B0D2AA9002C8BF8 /* ViewController.m in Sources */,
