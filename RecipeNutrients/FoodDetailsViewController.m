@@ -11,6 +11,7 @@
 #import "Nutrient.h"
 #import "Measure.h"
 #import "PickerComponent.h"
+#import "Fraction.h"
 
 #import "NutritionCell.h"
 
@@ -58,7 +59,7 @@
 
     //Data
     [self sortNutrientsByGroups];
-    [self setupMeasurementOptions];
+    [self setupMeasurementOptionsAndPicker];
     
     //Set startup defaults
     [self setMeasurementPickerDefaults];
@@ -93,34 +94,40 @@
     self.detailView.measurementPicker.layer.borderWidth = 1;
     
     [self.detailView.measurementPicker selectRow:1 inComponent:0 animated:false];
-    
-    self.pickerMultiplierWhole = [self.wholeOptions[1] floatValue];
-    self.pickerMultiplierFraction = [self.fractionOptions[0] floatValue];
-
 }
 
--(void)setupMeasurementOptions {
-    NSArray *keys = [self.food.getNutrients allKeys];
-    self.measurementOptions = [[NSMutableArray alloc] initWithArray:[self.food.getNutrients[keys[0]] getMeasurementOptions]];
-    [self.measurementOptions sortUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-    
-    self.selectedMeasurement = self.measurementOptions[0];
-    
-    self.wholeOptions = @[@0,@1,@2,@3,@4,@5,@6,@7,@8,@9,@10,
-                        @11,@12,@13,@14,@15,@16,@17,@18,@19,@20,
-                        @21,@22,@23,@24,@25,@26,@27,@28,@29,@30,
-                        @31,@32,@33,@34,@35,@36,@37,@38,@39,@40,
-                        @41,@42,@43,@44,@45,@46,@47,@48,@49,@50,
-                        @51,@52,@53,@54,@55,@56,@57,@58,@59,@60];
-    
-    self.fractionOptions = @[@0, @0.125, @0.25, @0.375, @0.5, @0.625, @0.75, @0.875];
-    self.fractionOptionLabels = @[@"0", @"1/8", @"1/4", @"3/8", @"1/2", @"5/8", @"3/4", @"7/8"];
+-(void)setupMeasurementOptionsAndPicker {
+    [self setPickerWholeNumbersArray];
+    [self setPickerFractionsArray];
+    [self setPickerMeasurementUnitsArray];
     
     self.pickerComponents = @[[[PickerComponent alloc] initWithArray:self.wholeOptions],
                               [[PickerComponent alloc] initWithLabelArray:self.fractionOptionLabels andValueArray:self.fractionOptions],
                               [[PickerComponent alloc] initWithArray:self.measurementOptions]];
     
 }
+
+-(void)setPickerWholeNumbersArray {
+    NSMutableArray *wholeNumbers = [[NSMutableArray alloc] init];
+    for (int i = 0; i <= 5000; i++) {
+        [wholeNumbers addObject:[NSNumber numberWithInt:i]];
+    }
+    self.wholeOptions = wholeNumbers;
+}
+
+-(void)setPickerFractionsArray {
+    NSArray *fractions = [Fraction fetchFullSetOfFractionsEighthWithZero];
+    self.fractionOptions = [Fraction getAllValues:fractions];
+    self.fractionOptionLabels = [Fraction getAllStrings:fractions];
+}
+
+-(void)setPickerMeasurementUnitsArray {
+    NSArray *keys = [self.food.getNutrients allKeys];
+    self.measurementOptions = [[NSMutableArray alloc] initWithArray:[self.food.getNutrients[keys[0]] getMeasurementOptions]];
+    [self.measurementOptions sortUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+    
+}
+
 
 #pragma mark - UITableViewDataSource
 -(CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -182,11 +189,6 @@
         [self.detailView.measurementPicker selectRow:1 inComponent:component animated:true];
     }
 
-    
-    self.pickerMultiplierWhole = [self.pickerComponents[0] floatValueForRow: [self selectedRowForComponent:0]];
-    self.pickerMultiplierFraction = [self.pickerComponents[1] floatValueForRow: [self selectedRowForComponent:1]];
-    self.selectedMeasurement = [self.pickerComponents[2] titleForRow:[self selectedRowForComponent:2]];
-    
     [self updateMultiplierAndReloadTable];
 }
 
@@ -194,10 +196,10 @@
 
     switch (component) {
         case 0:
-            return (self.view.frame.size.width * 15 ) / 100;
+            return (self.view.frame.size.width * 20 ) / 100;
             break;
         case 1:
-            return (self.view.frame.size.width * 15 ) / 100;
+            return (self.view.frame.size.width * 10 ) / 100;
             break;
         case 2:
             return (self.view.frame.size.width * 65 ) / 100;
@@ -224,6 +226,10 @@
 
 
 -(void)updateMultiplierAndReloadTable {
+    self.pickerMultiplierWhole = [self.pickerComponents[0] floatValueForRow: [self selectedRowForComponent:0]];
+    self.pickerMultiplierFraction = [self.pickerComponents[1] floatValueForRow: [self selectedRowForComponent:1]];
+    self.selectedMeasurement = [self.pickerComponents[2] titleForRow:[self selectedRowForComponent:2]];
+
     self.pickerMultiplier = self.pickerMultiplierWhole + self.pickerMultiplierFraction;
     [self updateTitleWithMeasurement];
     [self.detailView.tableView reloadData];
@@ -232,6 +238,7 @@
 -(NSInteger)selectedRowForComponent:(NSInteger)component {
     return [self.detailView.measurementPicker selectedRowInComponent:component];
 }
+
 
 #pragma mark - misc
 -(void)sortNutrientsByGroups {

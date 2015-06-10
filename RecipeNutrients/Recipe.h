@@ -10,4 +10,17 @@
 
 @interface Recipe : NSObject
 
+- (instancetype)initWithName:(NSString*)name servings:(NSInteger)servings servingUnits:(NSString*)units;
+-(instancetype)initWithName:(NSString*)name;
+
+-(NSString*)getName;
+-(NSInteger)getServings;
+-(NSString*)getServingUnits;
+-(NSArray*)getIngredients;
+
+-(void)updateName:(NSString*)name;
+-(void)updateServings:(NSInteger)servings;
+-(void)updateServingUnits:(NSString*)units;
+-(void)updateIngredients:(NSArray *)ingredients;
+
 @end

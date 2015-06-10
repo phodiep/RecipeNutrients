@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface RecipeView : UIView
+@property (strong, nonatomic) IBOutlet UINavigationItem *titleBar;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end

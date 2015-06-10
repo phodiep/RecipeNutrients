@@ -9,6 +9,7 @@
 #import "RecipesViewController.h"
 
 #import "RecipesListView.h"
+#import "RecipeViewController.h"
 
 @interface RecipesViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -88,8 +89,7 @@
 }
 
 -(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.recipesView.tableView.editing)
-    {
+    if (self.recipesView.tableView.editing) {
         return UITableViewCellEditingStyleDelete;
     }
     
@@ -121,9 +121,11 @@
 -(void)addRecipeButtonPressed {
     //TODO: prompt user for details with new view
     
-    [self.recipes insertObject:@"new recipe! :)" atIndex:0];
-    
-    [self.recipesView.tableView reloadData];
+//    [self.recipes insertObject:@"new recipe! :)" atIndex:0];
+//    
+//    [self.recipesView.tableView reloadData];
+    RecipeViewController *recipeVC = [[RecipeViewController alloc] init];
+    [self presentViewController:recipeVC animated:true completion:nil];
     
 }
 
