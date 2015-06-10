@@ -11,6 +11,7 @@
 @interface Recipe : NSObject
 
 - (instancetype)initWithName:(NSString*)name servings:(NSInteger)servings servingUnits:(NSString*)units;
+- (instancetype)initWithName:(NSString*)name servings:(NSInteger)servings servingUnits:(NSString*)units ingredients:(NSArray*)ingredients;
 -(instancetype)initWithName:(NSString*)name;
 
 -(NSString*)getName;

@@ -19,7 +19,7 @@
 
 @implementation Recipe
 
-- (instancetype)initWithName:(NSString*)name servings:(NSInteger)servings servingUnits:(NSString*)units {
+- (instancetype)initWithName:(NSString*)name servings:(NSInteger)servings servingUnits:(NSString*)units ingredients:(NSArray*)ingredients {
     self = [super init];
     if (self) {
         if ([name isEqualToString: @""]) {
@@ -28,9 +28,13 @@
         self.name = name;
         self.servings = servings;
         self.servingUnits = units;
-        self.ingredients = [[NSMutableArray alloc] init];
+        self.ingredients = [[NSMutableArray alloc] initWithArray:ingredients];
     }
     return self;
+}
+
+- (instancetype)initWithName:(NSString*)name servings:(NSInteger)servings servingUnits:(NSString*)units {
+    return [self initWithName:name servings:servings servingUnits:units ingredients:nil];
 }
 
 -(instancetype)initWithName:(NSString*)name {
@@ -54,7 +58,9 @@
 }
 
 -(void)updateName:(NSString*)name {
-    self.name = name;
+    if (![name isEqualToString:@""] && name != nil){
+        self.name = name;
+    }
 }
 
 -(void)updateServings:(NSInteger)servings {

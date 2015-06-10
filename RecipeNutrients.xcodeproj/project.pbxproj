@@ -21,6 +21,7 @@
 		1D27EB4A1B27870500274660 /* IngredientCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D27EB491B27870500274660 /* IngredientCell.m */; };
 		1D27EB4D1B27A15C00274660 /* Fraction.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D27EB4C1B27A15C00274660 /* Fraction.m */; };
 		1D27EB4F1B27A35300274660 /* FractionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D27EB4E1B27A35300274660 /* FractionTests.m */; };
+		1D27EB511B27B83A00274660 /* RecipeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D27EB501B27B83A00274660 /* RecipeTests.m */; };
 		1DF99F681B0D2AA9002C8BF8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF99F671B0D2AA9002C8BF8 /* main.m */; };
 		1DF99F6B1B0D2AA9002C8BF8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF99F6A1B0D2AA9002C8BF8 /* AppDelegate.m */; };
 		1DF99F6E1B0D2AA9002C8BF8 /* RecipeNutrients.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1DF99F6C1B0D2AA9002C8BF8 /* RecipeNutrients.xcdatamodeld */; };
@@ -98,6 +99,7 @@
 		1D27EB4B1B27A15C00274660 /* Fraction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fraction.h; sourceTree = "<group>"; };
 		1D27EB4C1B27A15C00274660 /* Fraction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fraction.m; sourceTree = "<group>"; };
 		1D27EB4E1B27A35300274660 /* FractionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FractionTests.m; sourceTree = "<group>"; };
+		1D27EB501B27B83A00274660 /* RecipeTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeTests.m; sourceTree = "<group>"; };
 		1DF99F621B0D2AA9002C8BF8 /* RecipeNutrients.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeNutrients.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF99F661B0D2AA9002C8BF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1DF99F671B0D2AA9002C8BF8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 				1D27EB391B26418700274660 /* PickerComponentTests.m */,
 				1D27EB411B2776AE00274660 /* RecipeIngredientTests.m */,
 				1D27EB4E1B27A35300274660 /* FractionTests.m */,
+				1D27EB501B27B83A00274660 /* RecipeTests.m */,
 			);
 			path = RecipeNutrientsTests;
 			sourceTree = "<group>";
@@ -495,6 +498,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DF99F971B0D2C34002C8BF8 /* ApiKeysTest.m in Sources */,
+				1D27EB511B27B83A00274660 /* RecipeTests.m in Sources */,
 				1DF99F9C1B0D3AFB002C8BF8 /* NetworkControllerTest.m in Sources */,
 				1DF99FD81B1F8F97002C8BF8 /* NutrientTests.m in Sources */,
 				1DF99F851B0D2AA9002C8BF8 /* RecipeNutrientsTests.m in Sources */,
