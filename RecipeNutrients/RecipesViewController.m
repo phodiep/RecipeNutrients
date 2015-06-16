@@ -15,10 +15,18 @@
 
 @interface RecipesViewController () <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate>
 
+typedef enum {
+    NewRecipe,
+    ErrorInvalidRecipeName
+} AlertViewTag;
+
+typedef enum {
+    Cancel,
+    Ok
+} ButtonIndex;
+
 @property (strong, nonatomic) RecipesListView *recipesView;
 @property (strong, nonatomic) NSMutableArray *recipes;
-
-@property (strong, nonatomic) UIAlertView *recipeAlertView;
 
 @end
 
@@ -43,7 +51,6 @@
     [super viewWillAppear:animated];
     
     [self loadDataSourceAndReloadTableView];
-
 }
 
 #pragma mark - Setup methods
@@ -63,12 +70,19 @@
 }
 
 -(void)setupTitleBarItemsForNormalMode {
-    self.recipesView.titleBar.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editButtonPressed)];
-    self.recipesView.titleBar.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addRecipeButtonPressed)];
+    self.recipesView.titleBar.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
+                                                                                                target:self
+                                                                                                action:@selector(editButtonPressed)];
+    
+    self.recipesView.titleBar.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                                                                 target:self
+                                                                                                 action:@selector(addRecipeButtonPressed)];
 }
 
 -(void)setupTitleBarItemsForTableViewEditMode {
-    self.recipesView.titleBar.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(editDoneButtonPressed)];
+    self.recipesView.titleBar.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                                                                target:self
+                                                                                                action:@selector(editDoneButtonPressed)];
     self.recipesView.titleBar.rightBarButtonItem = nil;
 }
 
@@ -119,43 +133,55 @@
 
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
+        if ([self.recipes count] == 1) {
+            [tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
+        } else {
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        }
+        
         [self.recipes removeObjectAtIndex:indexPath.row];
+
         [self updateRecipesService];
         [self loadDataSourceAndReloadTableView];
     }
+
 }
 
 #pragma mark - UIAlertViewDelegate
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (alertView.tag == 0) {
-        switch (buttonIndex) {
-            case 0:  // cancel
-                break;
-            case 1: // continue
-                if ([[alertView textFieldAtIndex:0].text isEqualToString:@""]) {
-                    [self showErrorInvalidRecipeNameEntered];
-                    break;
-                }
-                [self createNewRecipeAndOpen:[alertView textFieldAtIndex:0].text];
-                break;
-            default:
-                break;
+    if (alertView.tag == NewRecipe &&
+        buttonIndex == Ok) {
+
+        if ([[alertView textFieldAtIndex:0].text isEqualToString:@""]) {
+            [self showErrorInvalidRecipeNameEnteredAlertView];
+            return;
         }
+        
+        [self createNewRecipeAndOpen:[alertView textFieldAtIndex:0].text];
     }
     
-    if (alertView.tag == 1) {
-        if (buttonIndex == 0) {
-            [self.recipeAlertView show];
-        }
+    if (alertView.tag == ErrorInvalidRecipeName &&
+        buttonIndex == Cancel) {
+        [self showNewRecipeAlertView];
     }
 }
 
--(void)showErrorInvalidRecipeNameEntered {
+-(void)showErrorInvalidRecipeNameEnteredAlertView {
     UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Recipes require a name" message:@"Enter a name to continue" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    errorAlert.tag = 1;
+    errorAlert.tag = ErrorInvalidRecipeName;
     
     [errorAlert show];
 }
+
+-(void)showNewRecipeAlertView {
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Create New Recipe" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Continue", nil];
+    alertView.tag = NewRecipe;
+    alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [alertView textFieldAtIndex:0].placeholder = @"Recipe Name (ex. Mom's Famous Banana Bread)";
+    
+    [alertView show];
+}
+
 
 #pragma mark - Button Actions
 -(void)editButtonPressed {
@@ -169,14 +195,7 @@
 }
 
 -(void)addRecipeButtonPressed {
-    self.recipeAlertView = [[UIAlertView alloc] initWithTitle:@"Create New Recipe" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Continue", nil];
-    self.recipeAlertView.tag = 0;
-    self.recipeAlertView.alertViewStyle = UIAlertViewStylePlainTextInput;
-    [self.recipeAlertView textFieldAtIndex:0].placeholder = @"Recipe Name (ex. Mom's Famous Banana Bread)";
-    
-    [self.recipeAlertView show];
-    
-    
+    [self showNewRecipeAlertView];
 }
 
 -(void)createNewRecipeAndOpen:(NSString*)name {
