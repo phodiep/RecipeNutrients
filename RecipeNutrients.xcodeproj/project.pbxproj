@@ -24,6 +24,8 @@
 		1D27EB511B27B83A00274660 /* RecipeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D27EB501B27B83A00274660 /* RecipeTests.m */; };
 		1D27EB581B28DFF300274660 /* ServingsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D27EB571B28DFF300274660 /* ServingsCell.xib */; };
 		1D27EB5B1B28E00900274660 /* ServingsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D27EB5A1B28E00900274660 /* ServingsCell.m */; };
+		1D27EB5E1B2F962700274660 /* RecipesService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D27EB5D1B2F962700274660 /* RecipesService.m */; };
+		1D27EB601B2FB93B00274660 /* RecipesServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D27EB5F1B2FB93B00274660 /* RecipesServiceTests.m */; };
 		1DF99F681B0D2AA9002C8BF8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF99F671B0D2AA9002C8BF8 /* main.m */; };
 		1DF99F6B1B0D2AA9002C8BF8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF99F6A1B0D2AA9002C8BF8 /* AppDelegate.m */; };
 		1DF99F6E1B0D2AA9002C8BF8 /* RecipeNutrients.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1DF99F6C1B0D2AA9002C8BF8 /* RecipeNutrients.xcdatamodeld */; };
@@ -105,6 +107,9 @@
 		1D27EB571B28DFF300274660 /* ServingsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServingsCell.xib; sourceTree = "<group>"; };
 		1D27EB591B28E00900274660 /* ServingsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServingsCell.h; sourceTree = "<group>"; };
 		1D27EB5A1B28E00900274660 /* ServingsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServingsCell.m; sourceTree = "<group>"; };
+		1D27EB5C1B2F962700274660 /* RecipesService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipesService.h; sourceTree = "<group>"; };
+		1D27EB5D1B2F962700274660 /* RecipesService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipesService.m; sourceTree = "<group>"; };
+		1D27EB5F1B2FB93B00274660 /* RecipesServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipesServiceTests.m; sourceTree = "<group>"; };
 		1DF99F621B0D2AA9002C8BF8 /* RecipeNutrients.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeNutrients.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF99F661B0D2AA9002C8BF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1DF99F671B0D2AA9002C8BF8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -247,6 +252,7 @@
 				1D27EB411B2776AE00274660 /* RecipeIngredientTests.m */,
 				1D27EB4E1B27A35300274660 /* FractionTests.m */,
 				1D27EB501B27B83A00274660 /* RecipeTests.m */,
+				1D27EB5F1B2FB93B00274660 /* RecipesServiceTests.m */,
 			);
 			path = RecipeNutrientsTests;
 			sourceTree = "<group>";
@@ -334,6 +340,8 @@
 				1DF99FEA1B21038F002C8BF8 /* FoodDetailsViewController.m */,
 				1D27EB431B27851300274660 /* RecipeViewController.h */,
 				1D27EB441B27851300274660 /* RecipeViewController.m */,
+				1D27EB5C1B2F962700274660 /* RecipesService.h */,
+				1D27EB5D1B2F962700274660 /* RecipesService.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -476,6 +484,7 @@
 				1DF99F6B1B0D2AA9002C8BF8 /* AppDelegate.m in Sources */,
 				1DF99FB91B17977E002C8BF8 /* SearchViewController.m in Sources */,
 				1DF99F9F1B0D3DEF002C8BF8 /* Food.m in Sources */,
+				1D27EB5E1B2F962700274660 /* RecipesService.m in Sources */,
 				1D27EB351B251E9E00274660 /* RecipesListView.m in Sources */,
 				1DF99FEB1B21038F002C8BF8 /* FoodDetailsViewController.m in Sources */,
 				1D27EB4D1B27A15C00274660 /* Fraction.m in Sources */,
@@ -516,6 +525,7 @@
 				1DF99FDC1B1FDC4C002C8BF8 /* MeasureTests.m in Sources */,
 				1DF99FC81B1D12F8002C8BF8 /* FoodTests.m in Sources */,
 				1D27EB4F1B27A35300274660 /* FractionTests.m in Sources */,
+				1D27EB601B2FB93B00274660 /* RecipesServiceTests.m in Sources */,
 				1D27EB3A1B26418700274660 /* PickerComponentTests.m in Sources */,
 				1DF99FE61B20ED9C002C8BF8 /* SearchResultTests.m in Sources */,
 				1DF99FA71B0E79D0002C8BF8 /* UsdaClientTest.m in Sources */,
