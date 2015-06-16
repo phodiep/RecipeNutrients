@@ -14,6 +14,7 @@
 #import "Fraction.h"
 #import "UsdaClient.h"
 #import "Food.h"
+#import "RecipesService.h"
 
 @interface RecipeViewController () <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate>
 
@@ -214,8 +215,8 @@
                     [self showErrorInvalidRecipeNameEntered];
                     break;
                 }
-                [self.recipe updateName:[alertView textFieldAtIndex:0].text];
-                self.recipeView.titleBar.title = self.name;
+                self.name = [alertView textFieldAtIndex:0].text;
+                self.recipeView.titleBar.title = [alertView textFieldAtIndex:0].text;
                 break;
             default:
                 break;
@@ -289,9 +290,9 @@
     [self.recipe updateServingUnits:self.servingUnits];
     [self.recipe updateIngredients:self.ingredients];
     
-    [self dismissViewControllerAnimated:true completion:^{
-        //
-    }];
+    [[RecipesService sharedService] updateRecipe:self.recipe];
+    
+    [self dismissViewControllerAnimated:true completion:nil];
 }
 
 -(void)closeButDoNotSaveChangesToRecipe {

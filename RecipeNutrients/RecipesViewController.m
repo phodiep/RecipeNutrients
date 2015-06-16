@@ -11,6 +11,7 @@
 #import "RecipesListView.h"
 #import "RecipeViewController.h"
 #import "Recipe.h"
+#import "RecipesService.h"
 
 @interface RecipesViewController () <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate>
 
@@ -34,8 +35,14 @@
     [super viewDidLoad];
     
     [self setupDataSourceAndDelegate];
-    [self loadDataSource];
     [self setupTitleBar];
+
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self loadDataSourceAndReloadTableView];
 
 }
 
@@ -45,8 +52,9 @@
     self.recipesView.tableView.delegate = self;
 }
 
--(void)loadDataSource {
-    self.recipes = [[NSMutableArray alloc] initWithArray:@[@"Banana bread", @"Ice cream cake", @"Flan"]];
+-(void)loadDataSourceAndReloadTableView {
+    self.recipes = [[NSMutableArray alloc] initWithArray:[[RecipesService sharedService] fetchAllRecipes]];
+    [self.recipesView.tableView reloadData];
 }
 
 -(void)setupTitleBar {
@@ -64,7 +72,9 @@
     self.recipesView.titleBar.rightBarButtonItem = nil;
 }
 
-
+-(void)updateRecipesService {
+    [[RecipesService sharedService] replaceAllRecipes:self.recipes];
+}
 
 #pragma mark - UITableViewDataSource
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -74,7 +84,8 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [[UITableViewCell alloc] init];
     
-    cell.textLabel.text = self.recipes[indexPath.row];
+    Recipe *recipe = (Recipe*)self.recipes[indexPath.row];
+    cell.textLabel.text = recipe.getName;
     
     return cell;
 }
@@ -109,7 +120,8 @@
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [self.recipes removeObjectAtIndex:indexPath.row];
-        [self.recipesView.tableView reloadData];
+        [self updateRecipesService];
+        [self loadDataSourceAndReloadTableView];
     }
 }
 
@@ -169,11 +181,12 @@
 
 -(void)createNewRecipeAndOpen:(NSString*)name {
     Recipe *recipe = [[Recipe alloc] initWithName:name];
-    [self.recipes insertObject:recipe.getName atIndex:0];
-
+    [self.recipes insertObject:recipe atIndex:0];
+    
+    [self updateRecipesService];
+    
     [self openRecipe:recipe];
     
-    [self.recipesView.tableView reloadData];
 }
 
 -(void)openRecipe:(Recipe*)recipe {
